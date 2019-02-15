@@ -28,11 +28,8 @@ const values = [
 ];
 
 prompt.get(values, (err, result) => {
-  const fullDate = parse(result.date);
-  const year = fullDate.getFullYear();
-  const month = getMonth(fullDate);
-  const date = getDate(fullDate);
-  const path = _.slugify(`${year}-${month}-${date}-${result.artist}`);
+  const fullDate = formatDate(parse(result.date));
+  const path = _.slugify(`${fullDate}-${result.artist}`);
   const dir = `./posts/${path}`;
   mkdirp.sync(dir);
   const tags = [];
@@ -44,7 +41,7 @@ prompt.get(values, (err, result) => {
     title: `${result.artist} at ${result.venue}`,
     genre: `${result.genre}`,
     created: formatDate(new Date()),
-    date: `${formatDate(fullDate)}`,
+    date: `${fullDate}`,
     artist: `${result.artist}`,
     venue: `${result.venue}`,
     price: `${result.price}`,

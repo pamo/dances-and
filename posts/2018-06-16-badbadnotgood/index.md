@@ -11,8 +11,7 @@ country: USA
 price: $49.50
 solo: 'yes'
 festival: ''
-tags:
-  - solo show
+tags: ''
 cover: ''
 slug: '2018-06-16-badbadnotgood'
 ---
