@@ -21,6 +21,11 @@ export default class PostTemplate extends React.Component {
     if (!post.category) {
       post.category = config.postDefaultCategory;
     }
+    const lastFmUrl = `${config.lastfm.url}${encodeURI(post.artist).replace(
+      /%20/g,
+      '+'
+    )}`;
+
     return (
       <Layout>
         <div>
@@ -30,6 +35,20 @@ export default class PostTemplate extends React.Component {
           <SEO postPath={slug} postNode={postNode} postSEO />
           <div>
             <h1>{post.title}</h1>
+            <a href={lastFmUrl} target="_blank">
+              {post.artist}
+            </a>
+            <div>{post.venue}</div>
+            <div>
+              {post.city}, {post.state}, {post.country}
+            </div>
+            <div>{post.date}</div>
+            <div>{post.price}</div>
+            <div>{post.genre}</div>
+            <div>
+              Was it a solo show?
+              {post.solo}
+            </div>
             <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
             <div className="post-meta">
               <PostTags tags={post.tags} />
@@ -60,6 +79,11 @@ export const pageQuery = graphql`
         venue
         genre
         price
+        solo
+        festival
+        city
+        state
+        country
       }
       fields {
         nextTitle

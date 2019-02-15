@@ -5,6 +5,9 @@ created: 02/14/2019
 date: 06/16/2018
 artist: Little Dragon
 venue: Hearst Greek Theatre
+city: Berkeley
+state: CA
+country: USA
 price: $49.50
 solo: 'yes'
 festival: ''

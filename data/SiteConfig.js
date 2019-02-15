@@ -18,6 +18,9 @@ const config = {
   userAvatar: 'https://api.adorable.io/avatars/150/test.png', // User avatar to display in the author segment.
   userDescription: 'Sometimes the best concert buddy is yourself.', // User description to display in the author segment.
   // Links to social profiles/projects you want to display in the author segment/navigation bar.
+  lastfm: {
+    url: 'https://last.fm/user/Psyc-adelick/library/music/'
+  },
   userLinks: [
     {
       label: 'GitHub',

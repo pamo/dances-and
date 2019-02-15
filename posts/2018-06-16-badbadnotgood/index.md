@@ -8,7 +8,7 @@ venue: Hearst Greek Theatre
 city: Berkeley
 state: CA
 country: USA
-price: $49.50
+price: '$49.50'
 solo: 'yes'
 festival: ''
 tags: ''

@@ -10,7 +10,7 @@ state: CA
 country: USA
 price: $36.17
 solo: 'no'
-slug: '2019-0-14-toro-y-moi'
+slug: '2019-01-14-toro-y-moi'
 cover: ''
 festival: ''
 tags: ''
