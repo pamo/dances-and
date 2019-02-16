@@ -9,7 +9,7 @@ class Artist extends Component {
     const path = `/artists/${slugify(artist)}`;
     return (
       <Link to={path} key={artist}>
-        <h1>{artist}</h1>
+        <strong>{artist}</strong>
       </Link>
     );
   }

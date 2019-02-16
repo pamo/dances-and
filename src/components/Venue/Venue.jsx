@@ -8,7 +8,7 @@ class Venue extends Component {
     const path = `/venues/${slugify(venue)}`;
     return (
       <Link to={path} key={venue}>
-        <h1>{venue}</h1>
+        <strong>{venue}</strong>
       </Link>
     );
   }
