@@ -102,7 +102,11 @@ exports.createPages = ({ graphql, actions }) => {
   return new Promise((resolve, reject) => {
     const postPage = path.resolve('src/templates/post.jsx');
     const tagPage = path.resolve('src/templates/tag.jsx');
+    const venuePage = path.resolve('src/templates/venue.jsx');
+    const artistPage = path.resolve('src/templates/artist.jsx');
+    const festivalPage = path.resolve('src/templates/festival.jsx');
     const categoryPage = path.resolve('src/templates/category.jsx');
+
     resolve(
       graphql(
         `
@@ -113,6 +117,12 @@ exports.createPages = ({ graphql, actions }) => {
                   frontmatter {
                     tags
                     category
+                    artist
+                    opener1
+                    opener2
+                    opener3
+                    festival
+                    venue
                   }
                   fields {
                     slug
@@ -130,7 +140,11 @@ exports.createPages = ({ graphql, actions }) => {
         }
 
         const tagSet = new Set();
+        const artistSet = new Set();
+        const venueSet = new Set();
+        const festivalSet = new Set();
         const categorySet = new Set();
+
         result.data.allMarkdownRemark.edges.forEach(edge => {
           if (edge.node.frontmatter.tags) {
             edge.node.frontmatter.tags.forEach(tag => {
@@ -143,15 +157,27 @@ exports.createPages = ({ graphql, actions }) => {
           }
 
           if (edge.node.frontmatter.artist) {
-            categorySet.add(edge.node.frontmatter.artist);
+            artistSet.add(edge.node.frontmatter.artist);
+          }
+          if (edge.node.frontmatter.opener1) {
+            artistSet.add(edge.node.frontmatter.opener1);
+          }
+          if (edge.node.frontmatter.opener2) {
+            artistSet.add(edge.node.frontmatter.opener2);
+          }
+          if (edge.node.frontmatter.opener3) {
+            artistSet.add(edge.node.frontmatter.opener3);
+          }
+          if (edge.node.frontmatter.opener4) {
+            artistSet.add(edge.node.frontmatter.opener4);
           }
 
           if (edge.node.frontmatter.venue) {
-            categorySet.add(edge.node.frontmatter.venue);
+            venueSet.add(edge.node.frontmatter.venue);
           }
 
           if (edge.node.frontmatter.festival) {
-            categorySet.add(edge.node.frontmatter.festival);
+            festivalSet.add(edge.node.frontmatter.festival);
           }
 
           createPage({
@@ -164,6 +190,21 @@ exports.createPages = ({ graphql, actions }) => {
         });
 
         createListingPage('tags', 'tag', tagSet, tagPage, createPage);
+        createListingPage(
+          'artists',
+          'artist',
+          artistSet,
+          artistPage,
+          createPage
+        );
+        createListingPage('venues', 'venue', venueSet, venuePage, createPage);
+        createListingPage(
+          'festivals',
+          'festival',
+          festivalSet,
+          festivalPage,
+          createPage
+        );
         createListingPage(
           'categories',
           'category',
@@ -178,6 +219,8 @@ exports.createPages = ({ graphql, actions }) => {
 
 const createListingPage = (path, label, set, page, createPage) => {
   const list = Array.from(set);
+  console.log(`creating ${path} page for items`);
+  console.table(list);
   list.forEach(item => {
     const context = {};
     context[label] = item;
