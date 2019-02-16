@@ -1,9 +1,10 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import Layout from '../layout';
-import Festival from '../components/Festival/Festival';
-import SEO from '../components/SEO/SEO';
-import config from '../../data/SiteConfig';
+
+import config from '../../../data/SiteConfig';
+import Festival from '../../components/Festival/Festival';
+import SEO from '../../components/SEO/SEO';
+import Layout from '../../layout';
 
 class Festivals extends React.Component {
   render() {

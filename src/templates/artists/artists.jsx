@@ -1,9 +1,10 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import Layout from '../layout';
-import Artist from '../components/Artist/Artist';
-import SEO from '../components/SEO/SEO';
-import config from '../../data/SiteConfig';
+
+import config from '../../../data/SiteConfig';
+import Artist from '../../components/Artist/Artist';
+import SEO from '../../components/SEO/SEO';
+import Layout from '../../layout';
 
 class Artists extends React.Component {
   render() {

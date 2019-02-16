@@ -1,9 +1,10 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import Layout from '../layout';
-import Venue from '../components/Venue/Venue';
-import SEO from '../components/SEO/SEO';
-import config from '../../data/SiteConfig';
+
+import SEO from '../../components/SEO/SEO';
+import Venue from '../../components/Venue/Venue';
+import config from '../../../data/SiteConfig';
+import Layout from '../../layout';
 
 class Venues extends React.Component {
   render() {

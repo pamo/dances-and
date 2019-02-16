@@ -101,10 +101,10 @@ exports.createPages = ({ graphql, actions }) => {
 
   return new Promise((resolve, reject) => {
     const postPage = path.resolve('src/templates/post.jsx');
-    const tagPage = path.resolve('src/templates/tag.jsx');
-    const venuePage = path.resolve('src/templates/venue.jsx');
-    const artistPage = path.resolve('src/templates/artist.jsx');
-    const festivalPage = path.resolve('src/templates/festival.jsx');
+    const tagPage = path.resolve('src/templates/tags/tag.jsx');
+    const venuePage = path.resolve('src/templates/venues/venue.jsx');
+    const artistPage = path.resolve('src/templates/artists/artist.jsx');
+    const festivalPage = path.resolve('src/templates/festivals/festival.jsx');
 
     resolve(
       graphql(
@@ -198,7 +198,7 @@ const createListingPage = (dir, itemLabel, set, component, createPage) => {
   const list = Array.from(set);
 
   const context = {};
-  const indexComponent = path.resolve(`src/pages/${dir}.jsx`);
+  const indexComponent = path.resolve(`src/templates/${dir}/${dir}.jsx`);
   const indexPagePath = `/${dir}`;
   context[dir] = list;
 

@@ -2,9 +2,9 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import { Link } from 'gatsby';
 import { slugify } from 'underscore.string';
-import Layout from '../layout';
-import SEO from '../components/SEO/SEO';
-import config from '../../data/SiteConfig';
+import Layout from '../../layout';
+import SEO from '../../components/SEO/SEO';
+import config from '../../../data/SiteConfig';
 
 class Tags extends React.Component {
   render() {

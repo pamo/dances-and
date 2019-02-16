@@ -1,18 +1,18 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
-import Layout from '../layout';
-import PostListing from '../components/PostListing/PostListing';
-import config from '../../data/SiteConfig';
+import Layout from '../../layout';
+import PostListing from '../../components/PostListing/PostListing';
+import config from '../../../data/SiteConfig';
 
-export default class VenueTemplate extends React.Component {
+export default class FestivalTemplate extends React.Component {
   render() {
-    const { venue } = this.props.pageContext;
+    const { festival } = this.props.pageContext;
     const postEdges = this.props.data.allMarkdownRemark.edges;
     return (
       <Layout>
-        <div className="venue-container">
-          <Helmet title={`Shows at "${venue}" | ${config.siteTitle}`} />
+        <div className="festival-container">
+          <Helmet title={`Shows at "${festival}" | ${config.siteTitle}`} />
           <PostListing postEdges={postEdges} />
         </div>
       </Layout>
@@ -22,11 +22,11 @@ export default class VenueTemplate extends React.Component {
 
 /* eslint no-undef: "off" */
 export const pageQuery = graphql`
-  query VenuePage($venue: String) {
+  query FestivalPage($festival: String) {
     allMarkdownRemark(
       limit: 1000
       sort: { fields: [fields___date], order: DESC }
-      filter: { frontmatter: { venue: { in: [$venue] } } }
+      filter: { frontmatter: { festival: { in: [$festival] } } }
     ) {
       totalCount
       edges {

@@ -1,18 +1,18 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
-import Layout from '../layout';
-import PostListing from '../components/PostListing/PostListing';
-import config from '../../data/SiteConfig';
+import Layout from '../../layout';
+import PostListing from '../../components/PostListing/PostListing';
+import config from '../../../data/SiteConfig';
 
-export default class ArtistTemplate extends React.Component {
+export default class VenueTemplate extends React.Component {
   render() {
-    const { artist } = this.props.pageContext;
+    const { venue } = this.props.pageContext;
     const postEdges = this.props.data.allMarkdownRemark.edges;
     return (
       <Layout>
-        <div className="artist-container">
-          <Helmet title={`Shows with "${artist}" | ${config.siteTitle}`} />
+        <div className="venue-container">
+          <Helmet title={`Shows at "${venue}" | ${config.siteTitle}`} />
           <PostListing postEdges={postEdges} />
         </div>
       </Layout>
@@ -22,11 +22,11 @@ export default class ArtistTemplate extends React.Component {
 
 /* eslint no-undef: "off" */
 export const pageQuery = graphql`
-  query ArtistPage($artist: String) {
+  query VenuePage($venue: String) {
     allMarkdownRemark(
       limit: 1000
       sort: { fields: [fields___date], order: DESC }
-      filter: { frontmatter: { artists: { in: [$artist] } } }
+      filter: { frontmatter: { venue: { in: [$venue] } } }
     ) {
       totalCount
       edges {
