@@ -41,10 +41,6 @@ export default class PostTemplate extends React.Component {
     if (!post.id) {
       post.id = slug;
     }
-    if (!post.category) {
-      post.category = config.postDefaultCategory;
-    }
-
     return (
       <Layout>
         <div>
@@ -100,7 +96,6 @@ export const pageQuery = graphql`
         title
         cover
         date
-        category
         openers
         tags
         artist

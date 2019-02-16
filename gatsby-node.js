@@ -105,7 +105,6 @@ exports.createPages = ({ graphql, actions }) => {
     const venuePage = path.resolve('src/templates/venue.jsx');
     const artistPage = path.resolve('src/templates/artist.jsx');
     const festivalPage = path.resolve('src/templates/festival.jsx');
-    const categoryPage = path.resolve('src/templates/category.jsx');
 
     resolve(
       graphql(
@@ -116,7 +115,6 @@ exports.createPages = ({ graphql, actions }) => {
                 node {
                   frontmatter {
                     tags
-                    category
                     artists
                     festival
                     venue
@@ -140,7 +138,6 @@ exports.createPages = ({ graphql, actions }) => {
         const artistSet = new Set();
         const venueSet = new Set();
         const festivalSet = new Set();
-        const categorySet = new Set();
 
         result.data.allMarkdownRemark.edges.forEach(edge => {
           if (edge.node.frontmatter.tags) {
@@ -192,29 +189,36 @@ exports.createPages = ({ graphql, actions }) => {
           festivalPage,
           createPage
         );
-        createListingPage(
-          'categories',
-          'category',
-          categorySet,
-          categoryPage,
-          createPage
-        );
       })
     );
   });
 };
 
-const createListingPage = (path, label, set, page, createPage) => {
+const createListingPage = (dir, itemLabel, set, component, createPage) => {
   const list = Array.from(set);
-  console.log(`creating ${path} page for items`);
-  console.table(list);
-  list.forEach(item => {
-    const context = {};
-    context[label] = item;
 
+  const context = {};
+  const indexComponent = path.resolve(`src/pages/${dir}.jsx`);
+  const indexPagePath = `/${dir}`;
+  context[dir] = list;
+
+  console.log(`creating ${indexPagePath}`);
+
+  createPage({
+    path: indexPagePath,
+    context,
+    component: indexComponent
+  });
+
+  list.forEach(item => {
+    const itemPagePath = `/${dir}/${_.kebabCase(item)}`;
+    const context = {};
+    context[itemLabel] = item;
+
+    console.log(`creating ${itemPagePath}`);
     createPage({
-      path: `/${path}/${_.kebabCase(item)}/`,
-      component: page,
+      path: itemPagePath,
+      component,
       context
     });
   });
