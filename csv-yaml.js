@@ -14,10 +14,32 @@ const createDirectory = ({ date, artist }) => {
 };
 
 let count = 0;
-const parseRow = json => {
-  const { path, dir } = createDirectory(json);
+const parseRow = data => {
+  const { path, dir } = createDirectory(data);
+  const {
+    date,
+    artist,
+    festival,
+    venue,
+    city,
+    state,
+    country,
+    price,
+    solo
+  } = data;
+  const json = {
+    date,
+    artist,
+    festival,
+    venue,
+    city,
+    state,
+    country,
+    price,
+    solo
+  };
 
-  json.title = `${json.artist} at ${json.venue}`;
+  json.title = `${data.artist} at ${data.venue}`;
   json.slug = path;
   json.cover = '';
   json.genre = '';
@@ -25,15 +47,23 @@ const parseRow = json => {
   json.tags = [];
   json.created = formatDate(new Date());
 
-  if (!json.price) {
+  const openers = [];
+  if (data.opener1) openers.push(data.opener1);
+  if (data.opener2) openers.push(data.opener2);
+  if (data.opener3) openers.push(data.opener3);
+  if (data.opener4) openers.push(data.opener4);
+  json.artists = [data.artist, ...openers];
+  json.openers = openers;
+
+  if (!data.price) {
     json.price = 'unknown';
     json.tags.push('unknown price');
   }
-  if (json.price === '$0.00') {
+  if (data.price === '$0.00') {
     json.price = 'free';
     json.tags.push('free show');
   }
-  if (json.solo === 'Yes') json.tags.push('solo show');
+  if (data.solo === 'Yes') json.tags.push('solo show');
 
   const postFileStr = `---
 ${yaml.safeDump(json)}---`;

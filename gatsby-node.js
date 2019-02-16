@@ -117,10 +117,7 @@ exports.createPages = ({ graphql, actions }) => {
                   frontmatter {
                     tags
                     category
-                    artist
-                    opener1
-                    opener2
-                    opener3
+                    artists
                     festival
                     venue
                   }
@@ -156,20 +153,10 @@ exports.createPages = ({ graphql, actions }) => {
             tagSet.add(edge.node.frontmatter.genre);
           }
 
-          if (edge.node.frontmatter.artist) {
-            artistSet.add(edge.node.frontmatter.artist);
-          }
-          if (edge.node.frontmatter.opener1) {
-            artistSet.add(edge.node.frontmatter.opener1);
-          }
-          if (edge.node.frontmatter.opener2) {
-            artistSet.add(edge.node.frontmatter.opener2);
-          }
-          if (edge.node.frontmatter.opener3) {
-            artistSet.add(edge.node.frontmatter.opener3);
-          }
-          if (edge.node.frontmatter.opener4) {
-            artistSet.add(edge.node.frontmatter.opener4);
+          if (edge.node.frontmatter.artists) {
+            edge.node.frontmatter.artists.forEach(artist => {
+              artistSet.add(artist);
+            });
           }
 
           if (edge.node.frontmatter.venue) {
