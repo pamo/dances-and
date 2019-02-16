@@ -18,7 +18,7 @@ tags:
 created: 02/15/2019
 artists:
   - 3LAU
-  - Matt & Kim
+  - Matt and Kim
 openers:
-  - Matt & Kim
+  - Matt and Kim
 ---

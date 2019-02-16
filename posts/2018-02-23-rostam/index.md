@@ -17,11 +17,11 @@ tags: []
 created: 02/15/2019
 artists:
   - Rostam
-  - ' Joy Again'
+  - Joy Again
   - The Y Axes
   - High Sunn
 openers:
-  - ' Joy Again'
+  - Joy Again
   - The Y Axes
   - High Sunn
 ---

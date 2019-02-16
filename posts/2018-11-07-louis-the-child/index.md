@@ -1,5 +1,5 @@
 ---
-date: '2019-11-07'
+date: '2018-11-07'
 artist: Louis the Child
 festival: ''
 venue: The Danforth Music Hall
@@ -9,7 +9,7 @@ country: Canada
 price: $26.54
 solo: 'Yes'
 title: Louis the Child at The Danforth Music Hall
-slug: 2019-11-07-louis-the-child
+slug: 2018-11-07-louis-the-child
 cover: ''
 genre: ''
 category: show
