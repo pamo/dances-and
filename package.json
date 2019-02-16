@@ -73,7 +73,7 @@
     "lint:md": "remark posts/",
     "write-good": "write-good $(glob 'posts/**/*.md')",
     "format:js": "prettier '**/*.{js,jsx}' --write",
-    "entry": "node new-post.js"
+    "entry": "node utils/new-post.js"
   },
   "remarkConfig": {
     "plugins": [
