@@ -10,8 +10,6 @@ import Artist from '../components/Artist/Artist';
 import Venue from '../components/Venue/Venue';
 import PostTags from '../components/PostTags/PostTags';
 import SEO from '../components/SEO/SEO';
-import SocialLinks from '../components/SocialLinks/SocialLinks';
-import UserInfo from '../components/UserInfo/UserInfo';
 import Layout from '../layout';
 
 const linkToLastFM = artist =>
@@ -21,7 +19,11 @@ const LocationComponent = ({ city, state, country }) => {
   return (
     <div>
       <div>
-        {city},{' '}{state},{' '}{country}
+        {city}
+,
+        {state}
+,
+        {country}
       </div>
     </div>
   );
@@ -64,43 +66,46 @@ export default class PostTemplate extends React.Component {
           </Helmet>
           <SEO postPath={slug} postNode={postNode} postSEO />
 
-          <div>
-            <h1>
-              <Artist artist={post.artist} />
-              {' '}
-at
-              {' '}
-              <Venue venue={post.venue} />
-              {' '}
-            on {post.date}
-            </h1>
+          <div className="post-container">
+            <div className="post-heading">
+              <time className="post-date" date-time={postNode.fields.date}>
+                {post.date}
+              </time>
+              <h1 className="headliner">
+                <Artist artist={post.artist} />
+              </h1>
+              <h2 className="venue">
+                <Venue venue={post.venue} />
+              </h2>
 
-            <OpenerComponent openers={post.openers} />
+              <OpenerComponent openers={post.openers} />
 
-            <LocationComponent
-              city={post.city}
-              state={post.state}
-              country={post.country}
-            />
-            <a href={linkToLastFM(post.artist)} target="_blank">
-              Last.fm listening history
-            </a>
-
-            <div>{post.price}</div>
-            <div>{post.genre}</div>
-
-            <div>
-              <strong>Was it a solo show?</strong>
-              {' '}
-              {post.solo}
+              <LocationComponent
+                city={post.city}
+                state={post.state}
+                country={post.country}
+              />
             </div>
+            <div className="post-details">
+            <h3>
+              <a href={linkToLastFM(post.artist)} target="_blank">
+                Last.fm listening history
+              </a>
+</h3>
+              <div>{post.price}</div>
+              <div>{post.genre}</div>
 
-            <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
-            <div className="post-meta">
-              <PostTags tags={post.tags} />
-              <SocialLinks postPath={slug} postNode={postNode} />
+              <div>
+                <strong>Was it a solo show?</strong>
+                {' '}
+                {post.solo}
+              </div>
+
+              <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
+              <div className="post-meta">
+                <PostTags tags={post.tags} />
+              </div>
             </div>
-            <UserInfo config={config} />
           </div>
         </div>
       </Layout>
@@ -118,7 +123,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
         cover
-        date
+        date(formatString: "MMMM Do, YYYY")
         openers
         tags
         artist

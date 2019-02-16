@@ -3,14 +3,13 @@
 }
 
 :root {
-  --water-ouzel: #4e5255;
-  --iris-ice: #e0e3f0;
-  --insignia-white: #ebf4fa;
-  --pale-iris: #8794c7;
-  --body-bg: var(--pale-iris);
-  --secondary-bg: var(--insignia-white);
-  --link-color: var(--iris-ice);
-  --font-color: var(--water-ouzel);
+  --body-bg: #1f2130d9;
+  --heading-color: #78d6fe;
+  --link-color: #b8e67a;
+  --font-color: #aeb7c8;
+  --border-color: #6fbaa8;
+  --caption-color: #f92f4b;
+  --secondary-link: #ba7ae5;
 }
 
 html {
@@ -30,4 +29,12 @@ a {
 }
 a:hover {
   color: var(--water-ouzel);
+}
+
+h1 {
+  color: var(--heading-color);
+}
+
+h2 a {
+  color: var(--secondary-link);
 }
