@@ -61,6 +61,8 @@
     "stylefmt": "^6.0.3",
     "stylelint": "^9.10.1",
     "stylelint-config-standard": "^18.0.0",
+    "tachyons": "^4.10.0",
+    "tachyons-components": "^1.0.1",
     "write-good": "^1.0.1"
   },
   "keywords": [

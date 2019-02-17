@@ -1,19 +1,16 @@
-import './post.css';
-
 import arrayToSentence from 'array-to-sentence';
 import { graphql } from 'gatsby';
 import React from 'react';
 import Helmet from 'react-helmet';
-
+import styled from 'tachyons-components';
 import config from '../../data/SiteConfig';
 import Artist from '../components/Artist/Artist';
-import Venue from '../components/Venue/Venue';
 import PostTags from '../components/PostTags/PostTags';
 import SEO from '../components/SEO/SEO';
+import Venue from '../components/Venue/Venue';
 import Layout from '../layout';
 
-const linkToLastFM = artist =>
-  `${config.lastfm.url}${encodeURI(artist).replace(/%20/g, '+')}`;
+const linkToLastFM = artist => `${config.lastfm.url}${encodeURI(artist).replace(/%20/g, '+')}`;
 
 const LocationComponent = ({ city, state, country }) => {
   return (
@@ -31,24 +28,24 @@ const LocationComponent = ({ city, state, country }) => {
 const OpenerComponent = ({ openers }) => {
   if (openers.length > 0) {
     const styledArray = openers.map(
-      opener =>
-        `<strong><a href=${linkToLastFM(
-          opener
-        )} target="_blank">${opener}</a></strong>`
+      opener => `<strong><a href=${linkToLastFM(opener)} target="_blank">${opener}</a></strong>`
     );
 
     return (
       <div>
         with
         {' '}
-        <span
-          dangerouslySetInnerHTML={{ __html: arrayToSentence(styledArray) }}
-        />
+        <span dangerouslySetInnerHTML={{ __html: arrayToSentence(styledArray) }} />
       </div>
     );
   }
   return null;
 };
+const Article = styled('article')`bg-white center mw5 ba b--black-10 mv4`;
+const Time = styled('time')`gray db pv2`;
+const Headliner = styled('h1')`f6 ttu tracked`;
+const CardTitle = styled('div')`pv2 ph3`;
+const CardBody = styled('div')`pa3`;
 
 export default class PostTemplate extends React.Component {
   render() {
@@ -65,48 +62,30 @@ export default class PostTemplate extends React.Component {
             <title>{`${post.title} | ${config.siteTitle}`}</title>
           </Helmet>
           <SEO postPath={slug} postNode={postNode} postSEO />
-
-          <div className="post-container">
-            <div className="post-heading">
-              <time className="post-date" date-time={postNode.fields.date}>
-                {post.date}
-              </time>
-              <h1 className="headliner">
+          <Article>
+            <CardTitle>
+              <Headliner>
+                {' '}
                 <Artist artist={post.artist} />
-              </h1>
-              <h2 className="venue">
-                <Venue venue={post.venue} />
-              </h2>
-
+                {' '}
+              </Headliner>
+              <Venue venue={post.venue} />
               <OpenerComponent openers={post.openers} />
+            </CardTitle>
+            <CardBody>
+              <LocationComponent city={post.city} state={post.state} country={post.country} />
 
-              <LocationComponent
-                city={post.city}
-                state={post.state}
-                country={post.country}
-              />
-            </div>
-            <div className="post-details">
-            <h3>
-              <a href={linkToLastFM(post.artist)} target="_blank">
-                Last.fm listening history
-              </a>
-</h3>
               <div>{post.price}</div>
               <div>{post.genre}</div>
+              <Time date-time={postNode.fields.date}>{post.date}</Time>
 
-              <div>
-                <strong>Was it a solo show?</strong>
-                {' '}
-                {post.solo}
-              </div>
-
+              <a href={linkToLastFM(post.artist)} className="link dim lh-title" target="_blank">
+                Last.fm listening history
+              </a>
               <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
-              <div className="post-meta">
-                <PostTags tags={post.tags} />
-              </div>
-            </div>
-          </div>
+              <PostTags tags={post.tags} />
+            </CardBody>
+          </Article>
         </div>
       </Layout>
     );

@@ -2,39 +2,10 @@
   box-sizing: border-box;
 }
 
-:root {
-  --body-bg: #1f2130d9;
-  --heading-color: #78d6fe;
-  --link-color: #b8e67a;
-  --font-color: #aeb7c8;
-  --border-color: #6fbaa8;
-  --caption-color: #f92f4b;
-  --secondary-link: #ba7ae5;
-}
-
 html {
   height: 100%;
 }
 
 body {
   margin: 0;
-  padding: 20px;
-  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Oxygen, Ubuntu, 'Helvetica Neue', Arial, sans-serif;
-  color: var(--font-color);
-  background-color: var(--body-bg);
-}
-a {
-  color: var(--link-color);
-}
-a:hover {
-  color: var(--water-ouzel);
-}
-
-h1 {
-  color: var(--heading-color);
-}
-
-h2 a {
-  color: var(--secondary-link);
 }
