@@ -2,7 +2,7 @@ const config = {
   siteTitle: 'dances and likes coffee', // Site title.
   siteTitleShort: 'a personal concert tracker', // Short site title for homescreen (PWA). Preferably should be under 12 characters to prevent truncation.
   siteTitleAlt: "pamo's Concert Tracker", // Alternative site title for SEO.
-  siteLogo: '/logos/logo-1024.png', // Logo used for SEO and manifest.
+  siteLogo: '/logos/logo-160.png', // Logo used for SEO and manifest.
   siteUrl: 'https://dances-and.likescoffee.com', // Domain of your website without pathPrefix.
   pathPrefix: '/', // Prefixes all links. For cases when deployed to example.github.io/gatsby-advanced-starter/.
   siteDescription: 'pamo dances and likes coffee', // Website description used for RSS feeds/meta description tag.
@@ -15,7 +15,7 @@ const config = {
   userEmail: 'pamela.ocampo@gmail.com', // Email used for RSS feed's author segment
   userTwitter: 'pmocampo', // Optionally renders "Follow Me" in the UserInfo segment.
   userLocation: 'San Francisco, CA', // User location to display in the author segment.
-  userAvatar: 'https://api.adorable.io/avatars/150/test.png', // User avatar to display in the author segment.
+  userAvatar: '/avatar.jpg', // User avatar to display in the author segment.
   userDescription: 'Sometimes the best concert buddy is yourself.', // User description to display in the author segment.
   // Links to social profiles/projects you want to display in the author segment/navigation bar.
   lastfm: {
@@ -54,11 +54,9 @@ if (config.pathPrefix === '/') {
 }
 
 // Make sure siteUrl doesn't have an ending forward slash
-if (config.siteUrl.substr(-1) === '/')
-  config.siteUrl = config.siteUrl.slice(0, -1);
+if (config.siteUrl.substr(-1) === '/') config.siteUrl = config.siteUrl.slice(0, -1);
 
 // Make sure siteRss has a starting forward slash
-if (config.siteRss && config.siteRss[0] !== '/')
-  config.siteRss = `/${config.siteRss}`;
+if (config.siteRss && config.siteRss[0] !== '/') config.siteRss = `/${config.siteRss}`;
 
 module.exports = config;

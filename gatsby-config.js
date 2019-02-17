@@ -10,25 +10,24 @@ module.exports = {
       feed_url: urljoin(config.siteUrl, config.pathPrefix, config.siteRss),
       title: config.siteTitle,
       description: config.siteDescription,
-      image_url: `${urljoin(
-        config.siteUrl,
-        config.pathPrefix
-      )}/logos/logo-512.png`,
+      image_url: `${urljoin(config.siteUrl, config.pathPrefix)}/logos/logo-160.png`,
       copyright: config.copyright
     }
   },
   plugins: [
     'gatsby-plugin-react-helmet',
-    'gatsby-plugin-lodash',{
+    'gatsby-plugin-lodash',
+    {
       resolve: `gatsby-plugin-emotion`,
       options: {
         // Accepts all options defined by `babel-plugin-emotion` plugin.
-      },
-    },{
+      }
+    },
+    {
       resolve: `gatsby-plugin-typography`,
       options: {
-        pathToConfigModule: `utils/typography`,
-      },
+        pathToConfigModule: `utils/typography`
+      }
     },
     {
       resolve: 'gatsby-source-filesystem',
@@ -91,13 +90,8 @@ module.exports = {
         display: 'minimal-ui',
         icons: [
           {
-            src: '/logos/logo-192x192.png',
-            sizes: '192x192',
-            type: 'image/png'
-          },
-          {
-            src: '/logos/logo-512x512.png',
-            sizes: '512x512',
+            src: '/logos/logo-160.png',
+            sizes: '160x160',
             type: 'image/png'
           }
         ]
