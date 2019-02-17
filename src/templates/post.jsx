@@ -46,6 +46,7 @@ const Time = styled('time')`gray db pv2`;
 const Headliner = styled('h1')`f6 ttu tracked`;
 const CardTitle = styled('div')`pv2 ph3`;
 const CardBody = styled('div')`pa3`;
+const LastFmLink = styled('a')`link dim lh-title`;
 
 export default class PostTemplate extends React.Component {
   render() {
@@ -77,12 +78,14 @@ export default class PostTemplate extends React.Component {
 
               <div>{post.price}</div>
               <div>{post.genre}</div>
+              <div>{post.solo === 'Yes' ? 'a solo adventure' : 'with a concert buddy'}</div>
               <Time date-time={postNode.fields.date}>{post.date}</Time>
-
-              <a href={linkToLastFM(post.artist)} className="link dim lh-title" target="_blank">
-                Last.fm listening history
-              </a>
               <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
+
+              <LastFmLink href={linkToLastFM(post.artist)} target="_blank">
+                Last.fm listening history
+              </LastFmLink>
+
               <PostTags tags={post.tags} />
             </CardBody>
           </Article>
