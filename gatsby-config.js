@@ -19,7 +19,17 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-react-helmet',
-    'gatsby-plugin-lodash',
+    'gatsby-plugin-lodash',{
+      resolve: `gatsby-plugin-emotion`,
+      options: {
+        // Accepts all options defined by `babel-plugin-emotion` plugin.
+      },
+    },{
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `utils/typography`,
+      },
+    },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
