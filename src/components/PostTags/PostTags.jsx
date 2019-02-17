@@ -3,7 +3,7 @@ import _ from 'lodash';
 import { Link } from 'gatsby';
 import styled from 'tachyons-components';
 
-const Tag = styled('span')`f6 link dim br-pill ba ph3 pv2 mb2 dib dark-blue`;
+const Tag = styled(Link)`f6 link dim br-pill ba ph3 pv2 mb2 dib dark-blue`;
 const TagContainer = styled('div')`pt3`;
 
 class PostTags extends Component {
@@ -14,9 +14,9 @@ class PostTags extends Component {
       <TagContainer>
         {tags &&
           tags.map(tag => (
-            <Link key={tag} style={{ textDecoration: 'none' }} to={`/tags/${_.kebabCase(tag)}`}>
-              <Tag>{tag}</Tag>
-            </Link>
+            <Tag key={tag} to={`/tags/${_.kebabCase(tag)}`}>
+              {tag}
+            </Tag>
           ))}
       </TagContainer>
     );
