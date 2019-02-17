@@ -11,7 +11,7 @@ class Artists extends React.Component {
     const { artists } = this.props.pageContext;
     return (
       <Layout>
-        <div className="index-container">
+        <div className="artist-container">
           <Helmet title={`All Artists | ${config.siteTitle}`} />
           <SEO />
           {artists.map(artist => (
