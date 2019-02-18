@@ -3,8 +3,8 @@ date: '2012-07-21'
 artist: Sleigh Bells
 festival: ''
 venue: 'Hudson River Park's Pier 63'
-city: New York
-state: NY
+city: 'New York'
+state: 'NY'
 country: USA
 price: free
 solo: 'No'
