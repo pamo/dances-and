@@ -1,17 +1,17 @@
 ---
-date: '2019-01-21'
+date: "2019-01-21"
 artist: Cautious Clay
-festival: ''
+festival: ""
 venue: The Independent
 city: San Francisco
 state: CA
 country: USA
 price: $22.00
-solo: 'No'
+solo: "No"
 title: Cautious Clay at The Independent
 slug: 2019-01-21-cautious-clay
-cover: ''
-genre: ''
+cover: ""
+genre: ""
 category: show
 tags: []
 created: 02/15/2019

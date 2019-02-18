@@ -1,17 +1,17 @@
 ---
-date: '2018-10-20'
+date: "2018-10-20"
 artist: 3LAU
-festival: ''
+festival: ""
 venue: Hearst Greek Theatre
 city: Berkeley
 state: CA
 country: USA
 price: free
-solo: 'No'
+solo: "No"
 title: 3LAU at Hearst Greek Theatre
 slug: 2018-10-20-3lau
-cover: ''
-genre: ''
+cover: ""
+genre: ""
 category: show
 tags:
   - free show

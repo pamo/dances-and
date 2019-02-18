@@ -1,17 +1,17 @@
 ---
-date: '2009-05-01'
+date: "2009-05-01"
 artist: Girl Talk
-festival: ''
+festival: ""
 venue: Moseley Campus Center
 city: Elon
 state: NC
 country: USA
 price: $25.00
-solo: 'No'
+solo: "No"
 title: Girl Talk at Moseley Campus Center
 slug: 2009-05-01-girl-talk
-cover: ''
-genre: ''
+cover: ""
+genre: ""
 category: show
 tags: []
 created: 02/15/2019

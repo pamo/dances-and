@@ -1,17 +1,17 @@
 ---
-date: '2014-08-17'
+date: "2014-08-17"
 artist: Sergio Mendes
-festival: ''
+festival: ""
 venue: Sigmund Stern Grove
 city: San Francisco
 state: CA
 country: USA
 price: free
-solo: 'No'
+solo: "No"
 title: Sergio Mendes at Sigmund Stern Grove
 slug: 2014-08-17-sergio-mendes
-cover: ''
-genre: ''
+cover: ""
+genre: ""
 category: show
 tags:
   - free show

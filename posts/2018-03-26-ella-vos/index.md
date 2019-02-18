@@ -1,17 +1,17 @@
 ---
-date: '2018-03-26'
+date: "2018-03-26"
 artist: Ella Vos
-festival: ''
+festival: ""
 venue: The Independent
 city: San Francisco
 state: CA
 country: USA
 price: unknown
-solo: 'No'
+solo: "No"
 title: Ella Vos at The Independent
 slug: 2018-03-26-ella-vos
-cover: ''
-genre: ''
+cover: ""
+genre: ""
 category: show
 tags:
   - unknown price

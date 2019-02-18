@@ -1,17 +1,17 @@
 ---
-date: '2013-09-21'
+date: "2013-09-21"
 artist: Blouse
-festival: ''
+festival: ""
 venue: Bottom of the Hill
 city: San Francisco
 state: CA
 country: USA
 price: $12.00
-solo: 'No'
+solo: "No"
 title: Blouse at Bottom of the Hill
 slug: 2013-09-21-blouse
-cover: ''
-genre: ''
+cover: ""
+genre: ""
 category: show
 tags: []
 created: 02/15/2019

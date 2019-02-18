@@ -1,17 +1,17 @@
 ---
-date: '2018-04-07'
+date: "2018-04-07"
 artist: Chromeo
-festival: ''
+festival: ""
 venue: The Fox Theater
 city: Oakland
 state: CA
 country: USA
 price: $51.35
-solo: 'No'
+solo: "No"
 title: Chromeo at The Fox Theater
 slug: 2018-04-07-chromeo
-cover: ''
-genre: ''
+cover: ""
+genre: ""
 category: show
 tags: []
 created: 02/15/2019

@@ -1,17 +1,17 @@
 ---
-date: '2015-04-09'
+date: "2015-04-09"
 artist: Yelle
-festival: ''
+festival: ""
 venue: Mezzanine
 city: San Francisco
 state: CA
 country: USA
 price: $20.00
-solo: 'No'
+solo: "No"
 title: Yelle at Mezzanine
 slug: 2015-04-09-yelle
-cover: ''
-genre: ''
+cover: ""
+genre: ""
 category: show
 tags: []
 created: 02/15/2019

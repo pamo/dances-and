@@ -1,17 +1,17 @@
 ---
-date: '2017-11-22'
+date: "2017-11-22"
 artist: Hot Chip
-festival: ''
+festival: ""
 venue: Mezzanine
 city: San Francisco
 state: CA
 country: USA
 price: $20.45
-solo: 'No'
+solo: "No"
 title: Hot Chip at Mezzanine
 slug: 2017-11-22-hot-chip
-cover: ''
-genre: ''
+cover: ""
+genre: ""
 category: show
 tags: []
 created: 02/15/2019

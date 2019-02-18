@@ -1,17 +1,17 @@
 ---
-date: '2018-07-10'
+date: "2018-07-10"
 artist: We Are Scientists
-festival: ''
+festival: ""
 venue: The Chapel
 city: San Francisco
 state: CA
 country: USA
 price: free
-solo: 'No'
+solo: "No"
 title: We Are Scientists at The Chapel
 slug: 2018-07-10-we-are-scientists
-cover: ''
-genre: ''
+cover: ""
+genre: ""
 category: show
 tags:
   - free show

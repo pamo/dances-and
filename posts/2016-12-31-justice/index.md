@@ -1,17 +1,17 @@
 ---
-date: '2016-12-31'
+date: "2016-12-31"
 artist: Justice
-festival: ''
+festival: ""
 venue: San Francsico Armory
 city: San Francisco
 state: CA
 country: USA
 price: $84.64
-solo: 'No'
+solo: "No"
 title: Justice at San Francsico Armory
 slug: 2016-12-31-justice
-cover: ''
-genre: ''
+cover: ""
+genre: ""
 category: show
 tags: []
 created: 02/15/2019

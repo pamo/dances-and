@@ -1,17 +1,17 @@
 ---
-date: '2018-05-17'
+date: "2018-05-17"
 artist: Poolside
-festival: ''
+festival: ""
 venue: Rickshaw Stop
 city: San Francisco
 state: CA
 country: USA
 price: $20.00
-solo: 'No'
+solo: "No"
 title: Poolside at Rickshaw Stop
 slug: 2018-05-17-poolside
-cover: ''
-genre: ''
+cover: ""
+genre: ""
 category: show
 tags: []
 created: 02/15/2019

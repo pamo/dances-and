@@ -1,17 +1,17 @@
 ---
-date: '2018-10-27'
+date: "2018-10-27"
 artist: RAC
-festival: ''
+festival: ""
 venue: Mezzanine
 city: San Francisco
 state: CA
 country: USA
 price: $36.90
-solo: 'No'
+solo: "No"
 title: RAC at Mezzanine
 slug: 2018-10-27-rac
-cover: ''
-genre: ''
+cover: ""
+genre: ""
 category: show
 tags: []
 created: 02/15/2019

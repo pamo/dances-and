@@ -1,17 +1,17 @@
 ---
-date: '2018-11-09'
+date: "2018-11-09"
 artist: Ladies of LCD Soundsystem
-festival: ''
+festival: ""
 venue: Mezzanine
 city: San Francisco
 state: CA
 country: USA
 price: $19.50
-solo: 'No'
+solo: "No"
 title: Ladies of LCD Soundsystem at Mezzanine
 slug: 2018-11-09-ladies-of-lcd-soundsystem
-cover: ''
-genre: ''
+cover: ""
+genre: ""
 category: show
 tags: []
 created: 02/15/2019

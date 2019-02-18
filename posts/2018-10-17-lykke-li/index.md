@@ -1,17 +1,17 @@
 ---
-date: '2018-10-17'
+date: "2018-10-17"
 artist: Lykke Li
-festival: ''
+festival: ""
 venue: The Fillmore
 city: San Francisco
 state: CA
 country: USA
 price: $29.50
-solo: 'No'
+solo: "No"
 title: Lykke Li at The Fillmore
 slug: 2018-10-17-lykke-li
-cover: ''
-genre: ''
+cover: ""
+genre: ""
 category: show
 tags: []
 created: 02/15/2019

@@ -1,17 +1,17 @@
 ---
-date: '2008-10-16'
+date: "2008-10-16"
 artist: MSTRKRFT
-festival: ''
+festival: ""
 venue: The Forum
 city: Charlotte
 state: NC
 country: USA
 price: unknown
-solo: 'No'
+solo: "No"
 title: MSTRKRFT at The Forum
 slug: 2008-10-16-mstrkrft
-cover: ''
-genre: ''
+cover: ""
+genre: ""
 category: show
 tags:
   - unknown price

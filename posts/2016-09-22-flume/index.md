@@ -1,17 +1,17 @@
 ---
-date: '2016-09-22'
+date: "2016-09-22"
 artist: Flume
-festival: ''
+festival: ""
 venue: Bill Graham Civic Auditorium
 city: San Francisco
 state: CA
 country: USA
 price: $60.00
-solo: 'Yes'
+solo: "Yes"
 title: Flume at Bill Graham Civic Auditorium
 slug: 2016-09-22-flume
-cover: ''
-genre: ''
+cover: ""
+genre: ""
 category: show
 tags:
   - solo show

@@ -1,17 +1,17 @@
 ---
-date: '2009-02-12'
+date: "2009-02-12"
 artist: Benny Benassi
-festival: ''
+festival: ""
 venue: The Forum
 city: Charlotte
 state: NC
 country: USA
 price: unknown
-solo: 'No'
+solo: "No"
 title: Benny Benassi at The Forum
 slug: 2009-02-12-benny-benassi
-cover: ''
-genre: ''
+cover: ""
+genre: ""
 category: show
 tags:
   - unknown price

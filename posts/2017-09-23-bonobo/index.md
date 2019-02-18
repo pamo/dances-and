@@ -1,17 +1,17 @@
 ---
-date: '2017-09-23'
+date: "2017-09-23"
 artist: Bonobo
-festival: ''
+festival: ""
 venue: Bill Graham Civic Auditorium
 city: San Francisco
 state: CA
 country: USA
 price: $45.00
-solo: 'Yes'
+solo: "Yes"
 title: Bonobo at Bill Graham Civic Auditorium
 slug: 2017-09-23-bonobo
-cover: ''
-genre: ''
+cover: ""
+genre: ""
 category: show
 tags:
   - solo show

@@ -1,17 +1,17 @@
 ---
-date: '2017-12-15'
+date: "2017-12-15"
 artist: Boys Noize
-festival: ''
+festival: ""
 venue: Halcyon
 city: San Francisco
 state: CA
 country: USA
 price: $38.11
-solo: 'Yes'
+solo: "Yes"
 title: Boys Noize at Halcyon
 slug: 2017-12-15-boys-noize
-cover: ''
-genre: ''
+cover: ""
+genre: ""
 category: show
 tags:
   - solo show

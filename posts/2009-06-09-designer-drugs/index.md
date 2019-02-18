@@ -1,5 +1,5 @@
 ---
-date: '2009-06-09'
+date: "2009-06-09"
 artist: Designer Drugs
 festival: Live 105's BFD
 venue: Shoreline Amphitheatre
@@ -7,11 +7,11 @@ city: Mountain View
 state: CA
 country: USA
 price: unknown
-solo: ''
+solo: ""
 title: Designer Drugs at Shoreline Amphitheatre
 slug: 2009-06-09-designer-drugs
-cover: ''
-genre: ''
+cover: ""
+genre: ""
 category: show
 tags:
   - unknown price

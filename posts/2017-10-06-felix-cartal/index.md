@@ -1,17 +1,17 @@
 ---
-date: '2017-10-06'
+date: "2017-10-06"
 artist: Felix Cartal
-festival: ''
+festival: ""
 venue: Audio Nightclub
 city: Santiago
 state: Santiago Metro
 country: Chile
 price: free
-solo: 'Yes'
+solo: "Yes"
 title: Felix Cartal at Audio Nightclub
 slug: 2017-10-06-felix-cartal
-cover: ''
-genre: ''
+cover: ""
+genre: ""
 category: show
 tags:
   - free show

@@ -1,17 +1,17 @@
 ---
-date: '2018-11-27'
+date: "2018-11-27"
 artist: Shallou
-festival: ''
+festival: ""
 venue: The Independent
 city: San Francisco
 state: CA
 country: USA
 price: unknown
-solo: 'No'
+solo: "No"
 title: Shallou at The Independent
 slug: 2018-11-27-shallou
-cover: ''
-genre: ''
+cover: ""
+genre: ""
 category: show
 tags:
   - unknown price

@@ -1,17 +1,17 @@
 ---
-date: '2018-06-16'
+date: "2018-06-16"
 artist: Flying Lotus
-festival: ''
+festival: ""
 venue: Hearst Greek Theatre
 city: Berkeley
 state: CA
 country: USA
 price: $49.50
-solo: 'Yes'
+solo: "Yes"
 title: Flying Lotus at Hearst Greek Theatre
 slug: 2018-06-16-flying-lotus
-cover: ''
-genre: ''
+cover: ""
+genre: ""
 category: show
 tags:
   - solo show

@@ -1,17 +1,17 @@
 ---
-date: '2014-06-28'
+date: "2014-06-28"
 artist: Robyn
-festival: ''
+festival: ""
 venue: Bill Graham Civic Auditorium
 city: San Francisco
 state: CA
 country: USA
 price: free
-solo: 'No'
+solo: "No"
 title: Robyn at Bill Graham Civic Auditorium
 slug: 2014-06-28-robyn
-cover: ''
-genre: ''
+cover: ""
+genre: ""
 category: show
 tags:
   - free show

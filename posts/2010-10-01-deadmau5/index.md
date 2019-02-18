@@ -1,17 +1,17 @@
 ---
-date: '2010-10-01'
+date: "2010-10-01"
 artist: Deadmau5
-festival: ''
+festival: ""
 venue: The Tabernacle
 city: Atlanta
 state: GA
 country: USA
 price: free
-solo: 'Yes'
+solo: "Yes"
 title: Deadmau5 at The Tabernacle
 slug: 2010-10-01-deadmau5
-cover: ''
-genre: ''
+cover: ""
+genre: ""
 category: show
 tags:
   - free show

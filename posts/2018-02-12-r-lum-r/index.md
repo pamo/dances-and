@@ -1,17 +1,17 @@
 ---
-date: '2018-02-12'
+date: "2018-02-12"
 artist: R.LUM.R
-festival: ''
+festival: ""
 venue: The Independent
 city: San Francisco
 state: CA
 country: USA
 price: $22.92
-solo: 'No'
+solo: "No"
 title: R.LUM.R at The Independent
 slug: 2018-02-12-r-lum-r
-cover: ''
-genre: ''
+cover: ""
+genre: ""
 category: show
 tags: []
 created: 02/15/2019

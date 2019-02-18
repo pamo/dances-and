@@ -1,17 +1,17 @@
 ---
-date: '2017-12-04'
+date: "2017-12-04"
 artist: James Blake
-festival: ''
+festival: ""
 venue: Herbst Theater
 city: San Francisco
 state: CA
 country: USA
 price: $45.00
-solo: 'Yes'
+solo: "Yes"
 title: James Blake at Herbst Theater
 slug: 2017-12-04-james-blake
-cover: ''
-genre: ''
+cover: ""
+genre: ""
 category: show
 tags:
   - solo show

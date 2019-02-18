@@ -1,17 +1,17 @@
 ---
-date: '2013-10-11'
+date: "2013-10-11"
 artist: Mr. Oizo
-festival: ''
+festival: ""
 venue: 1015 Folsom
 city: San Francisco
 state: CA
 country: USA
 price: $20.45
-solo: 'Yes'
+solo: "Yes"
 title: Mr. Oizo at 1015 Folsom
 slug: 2013-10-11-mr-oizo
-cover: ''
-genre: ''
+cover: ""
+genre: ""
 category: show
 tags:
   - solo show

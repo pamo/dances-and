@@ -1,17 +1,17 @@
 ---
-date: '2018-10-06'
+date: "2018-10-06"
 artist: James Blake
-festival: ''
+festival: ""
 venue: Public Works
 city: San Francisco
 state: CA
 country: USA
 price: $25.88
-solo: 'No'
+solo: "No"
 title: James Blake at Public Works
 slug: 2018-10-06-james-blake
-cover: ''
-genre: ''
+cover: ""
+genre: ""
 category: show
 tags: []
 created: 02/15/2019
