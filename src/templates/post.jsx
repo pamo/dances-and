@@ -1,8 +1,10 @@
-import arrayToSentence from 'array-to-sentence';
-import { graphql } from 'gatsby';
+import { initial, last } from 'underscore';
+import { graphql, Link } from 'gatsby';
+import { slugify } from 'underscore.string';
 import React from 'react';
 import Helmet from 'react-helmet';
 import styled from 'tachyons-components';
+
 import config from '../../data/SiteConfig';
 import Artist from '../components/Artist/Artist';
 import PostTags from '../components/PostTags/PostTags';
@@ -25,17 +27,30 @@ const LocationComponent = ({ city, state, country }) => {
     </div>
   );
 };
+
 const OpenerComponent = ({ openers }) => {
   if (openers.length > 0) {
-    const styledArray = openers.map(
-      opener => `<strong><a href=${linkToLastFM(opener)} target="_blank">${opener}</a></strong>`
-    );
+    const initialOpeners = initial(openers);
+    const lastOpenerName = last(openers);
+    const linkPath = name => `artists/${slugify(name)}`;
 
     return (
       <div>
         with
         {' '}
-        <span dangerouslySetInnerHTML={{ __html: arrayToSentence(styledArray) }} />
+        {initialOpeners.map(opener => (
+          <Link to={linkPath(opener)} key={opener}>
+            {opener}
+          </Link>
+        ))}
+        {' '}
+        { openers.length > 1 ? 'and' : null }
+        {' '}
+        {
+          <Link to={linkPath(lastOpenerName)} key={lastOpenerName}>
+            {lastOpenerName}
+          </Link>
+        }
       </div>
     );
   }
