@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import { slugify } from 'underscore.string';
 import { Link } from 'gatsby';
 import { randomColor } from '../utils';
 
 class Festival extends Component {
   render() {
     const festival = this.props.festival;
-    const path = `/festival/${festival}`;
+    const path = `/festivals/${slugify(festival)}`;
     return (
       <Link
         to={path}
