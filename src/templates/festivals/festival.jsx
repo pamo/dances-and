@@ -41,6 +41,7 @@ export const pageQuery = graphql`
             title
             artist
             venue
+            festival
             tags
             cover
             date

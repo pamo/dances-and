@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 import styled from 'tachyons-components';
 
 const Container = styled('section')`cf w-100 pa2-ns`;
-const Post = styled('article')`fl w-100 w-50-m  w-25-ns pa2-ns`;
+const Post = styled('article')`fl w-100 w-50-m w-25-ns pa2-ns`;
 const PostCoverContainer = styled('div')`aspect-ratio aspect-ratio--1x1`;
 const PostCover = styled('img')`db bg-center cover aspect-ratio--object`;
 const PostTitleLink = styled('div')`ph2 ph0-ns pb3 link db`;
@@ -22,6 +22,7 @@ class PostListing extends React.Component {
         title: postEdge.node.frontmatter.title,
         artist: postEdge.node.frontmatter.artist,
         venue: postEdge.node.frontmatter.venue,
+        festival: postEdge.node.frontmatter.festival,
         date: postEdge.node.fields.date,
         excerpt: postEdge.node.excerpt,
         timeToRead: postEdge.node.timeToRead
@@ -39,7 +40,9 @@ class PostListing extends React.Component {
             <Link to={post.path}>
               <PostTitleLink>
                 <PostMainTitle>{post.artist}</PostMainTitle>
-                <PostSubTitle>{post.venue}</PostSubTitle>
+                <PostSubTitle>
+                  {post.festival ? `${post.festival} Music Festival` : post.venue}
+                </PostSubTitle>
               </PostTitleLink>
             </Link>
           </Post>

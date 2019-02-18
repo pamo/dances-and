@@ -29,6 +29,15 @@ module.exports = {
         pathToConfigModule: `utils/typography`
       }
     },
+    'gatsby-plugin-sharp',
+    `gatsby-transformer-sharp`,
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'images',
+        path: `${__dirname}/static/images/`
+      }
+    },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -74,7 +83,6 @@ module.exports = {
         color: config.themeColor
       }
     },
-    'gatsby-plugin-sharp',
     'gatsby-plugin-catch-links',
     'gatsby-plugin-twitter',
     'gatsby-plugin-sitemap',
