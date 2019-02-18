@@ -1,7 +1,7 @@
 ---
 date: '2012-08-05'
 artist: Diplo
-festival: ''
+festival: 'Mad Decent Block Party'
 venue: Williamsburg Park
 city: Brooklyn
 state: NY
