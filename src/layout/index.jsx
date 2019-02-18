@@ -1,6 +1,7 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import config from '../../data/SiteConfig';
+import '../../node_modules/tachyons/css/tachyons.css';
 import './index.css';
 
 export default class MainLayout extends React.Component {

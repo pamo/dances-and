@@ -40,6 +40,8 @@
     "react-twitter-widgets": "^1.7.1",
     "react-typography": "^0.16.18",
     "sharp": "^0.21.3",
+    "tachyons": "^4.10.0",
+    "tachyons-components": "^1.0.1",
     "typography": "^0.16.18",
     "typography-theme-lawton": "^0.16.18",
     "url-join": "^4.0.0"
@@ -62,8 +64,6 @@
     "stylefmt": "^6.0.3",
     "stylelint": "^9.10.1",
     "stylelint-config-standard": "^18.0.0",
-    "tachyons": "^4.10.0",
-    "tachyons-components": "^1.0.1",
     "write-good": "^1.0.1"
   },
   "keywords": [

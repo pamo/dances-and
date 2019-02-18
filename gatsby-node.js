@@ -6,18 +6,16 @@ const siteConfig = require('./data/SiteConfig');
 const postNodes = [];
 
 function addSiblingNodes(createNodeField) {
-  postNodes.sort(
-    ({ frontmatter: { date: date1 } }, { frontmatter: { date: date2 } }) => {
-      const dateA = moment(`${date1}`, siteConfig.dateFromFormat);
-      const dateB = moment(`${date2}`, siteConfig.dateFromFormat);
+  postNodes.sort(({ frontmatter: { date: date1 } }, { frontmatter: { date: date2 } }) => {
+    const dateA = moment(`${date1}`, siteConfig.dateFromFormat);
+    const dateB = moment(`${date2}`, siteConfig.dateFromFormat);
 
-      if (dateA.isBefore(dateB)) return 1;
+    if (dateA.isBefore(dateB)) return 1;
 
-      if (dateB.isBefore(dateA)) return -1;
+    if (dateB.isBefore(dateA)) return -1;
 
-      return 0;
-    }
-  );
+    return 0;
+  });
 
   for (let i = 0; i < postNodes.length; i += 1) {
     const nextID = i + 1 < postNodes.length ? i + 1 : 0;
@@ -73,8 +71,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
         slug = `/${_.kebabCase(node.frontmatter.slug)}`;
       if (Object.prototype.hasOwnProperty.call(node.frontmatter, 'date')) {
         const date = moment(node.frontmatter.date, siteConfig.dateFromFormat);
-        if (!date.isValid)
-          console.warn(`WARNING: Invalid date.`, node.frontmatter);
+        if (!date.isValid) console.warn(`WARNING: Invalid date.`, node.frontmatter);
 
         createNodeField({
           node,
@@ -174,28 +171,16 @@ exports.createPages = ({ graphql, actions }) => {
         });
 
         createListingPage('tags', 'tag', tagSet, tagPage, createPage);
-        createListingPage(
-          'artists',
-          'artist',
-          artistSet,
-          artistPage,
-          createPage
-        );
+        createListingPage('artists', 'artist', artistSet, artistPage, createPage);
         createListingPage('venues', 'venue', venueSet, venuePage, createPage);
-        createListingPage(
-          'festivals',
-          'festival',
-          festivalSet,
-          festivalPage,
-          createPage
-        );
+        createListingPage('festivals', 'festival', festivalSet, festivalPage, createPage);
       })
     );
   });
 };
 
 const createListingPage = (dir, itemLabel, set, component, createPage) => {
-  const list = Array.from(set);
+  const list = Array.from(set).sort();
 
   const context = {};
   const indexComponent = path.resolve(`src/templates/${dir}/${dir}.jsx`);

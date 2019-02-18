@@ -1,10 +1,12 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
+import Footer from '../components/Footer/Footer';
 import Layout from '../layout';
 import PostListing from '../components/PostListing/PostListing';
 import SEO from '../components/SEO/SEO';
 import Hero from '../components/Hero/Hero';
+import Nav from '../components/Nav/Nav';
 import config from '../../data/SiteConfig';
 
 class Index extends React.Component {
@@ -16,8 +18,10 @@ class Index extends React.Component {
           <Helmet title={config.siteTitle} />
           <SEO />
           <Hero />
+          <Nav />
           <PostListing postEdges={postEdges} />
         </div>
+        <Footer config={config} />
       </Layout>
     );
   }
