@@ -16,6 +16,7 @@ class Nav extends Component {
             <Link
               to={page === 'headliners' ? '' : page}
               key={page}
+              activeClassName="underline dark-blue i"
               className="link dim blue dib mr3"
             >
               <h4>{page}</h4>
