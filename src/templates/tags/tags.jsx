@@ -15,8 +15,12 @@ class Tags extends React.Component {
           <Helmet title={`All Tags | ${config.siteTitle}`} />
           <SEO />
           {tags.map(tag => (
-            <Link to={`/tags/${slugify(tag)}`} key={tag}>
-              <h1>{tag}</h1>
+            <Link
+              to={`/tags/${slugify(tag)}`}
+              key={tag}
+              className="f3 link hover-light-blue b no-underline black dib mr3 mt1 mb1"
+            >
+              {tag}
             </Link>
           ))}
         </div>

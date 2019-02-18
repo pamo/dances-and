@@ -4,6 +4,7 @@ import { graphql } from 'gatsby';
 import Layout from '../../layout';
 import PostListing from '../../components/PostListing/PostListing';
 import config from '../../../data/SiteConfig';
+import Nav from '../../components/Nav/Nav';
 
 export default class VenueTemplate extends React.Component {
   render() {
@@ -11,8 +12,19 @@ export default class VenueTemplate extends React.Component {
     const postEdges = this.props.data.allMarkdownRemark.edges;
     return (
       <Layout>
+        <Nav />
         <div className="venue-container">
           <Helmet title={`Shows at "${venue}" | ${config.siteTitle}`} />
+          <h1 className="ml3">
+            I've seen
+            {' '}
+            {postEdges.length}
+            {' '}
+shows at
+            {' '}
+            {venue}
+          </h1>
+
           <PostListing postEdges={postEdges} />
         </div>
       </Layout>

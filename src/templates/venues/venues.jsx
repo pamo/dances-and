@@ -13,15 +13,15 @@ class Venues extends React.Component {
     return (
       <Layout>
         <Nav />
-        <div className="ph3 ph4-m ph5-l tj">
+        <div className="ph3 ph4-m ph5-l">
           <Helmet title={`All Venues | ${config.siteTitle}`} />
           <SEO />
           <h1>
-            All
+            I've been to
             {' '}
             <span>{venues.length}</span>
             {' '}
-Venues
+venues
           </h1>
           {venues.map(venue => (
             <Venue venue={venue} />

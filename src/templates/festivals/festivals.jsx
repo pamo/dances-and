@@ -13,15 +13,15 @@ class Festivals extends React.Component {
     return (
       <Layout>
         <Nav />
-        <div className="ph3 ph4-m ph5-l tj">
+        <div className="ph3 ph4-m ph5-l">
           <Helmet title={`All Festivals | ${config.siteTitle}`} />
           <SEO />
           <h1>
-            All
+            I rallied for
             {' '}
             <span>{festivals.length}</span>
             {' '}
-Festivals
+festivals
           </h1>
           {festivals.map(festival => (
             <Festival festival={festival} />

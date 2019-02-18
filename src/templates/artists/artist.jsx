@@ -2,6 +2,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
 import Layout from '../../layout';
+import Nav from '../../components/Nav/Nav';
 import PostListing from '../../components/PostListing/PostListing';
 import config from '../../../data/SiteConfig';
 
@@ -11,8 +12,18 @@ export default class ArtistTemplate extends React.Component {
     const postEdges = this.props.data.allMarkdownRemark.edges;
     return (
       <Layout>
+        <Nav />
         <div className="artist-container">
           <Helmet title={`Shows with "${artist}" | ${config.siteTitle}`} />
+          <h1 className="ml3">
+            I've seen
+            {' '}
+            {artist}
+            {' '}
+            {postEdges.length}
+            {' '}
+times
+          </h1>
           <PostListing postEdges={postEdges} />
         </div>
       </Layout>

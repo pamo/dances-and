@@ -13,15 +13,15 @@ class Artists extends React.Component {
     return (
       <Layout>
         <Nav />
-        <div className="ph3 ph4-m ph5-l tj">
+        <div className="ph3 ph4-m ph5-l">
           <Helmet title={`All Artists | ${config.siteTitle}`} />
           <SEO />
           <h1>
-            All
+            I've seen
             {' '}
             <span>{artists.length}</span>
             {' '}
-Artists
+artists
           </h1>
           {artists.map(artist => (
             <Artist artist={artist} />

@@ -41,6 +41,8 @@ class PostListing extends React.Component {
               <PostTitleLink>
                 <PostMainTitle>{post.artist}</PostMainTitle>
                 <PostSubTitle>
+                  @
+                  {' '}
                   {post.festival ? `${post.festival} Music Festival` : post.venue}
                 </PostSubTitle>
               </PostTitleLink>
