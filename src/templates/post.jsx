@@ -64,6 +64,10 @@ const Headliner = styled('h1')`f6 ttu tracked`;
 const Card = styled('div')`fl pa3 pa4-ns bg-white black-70 measure-narrow f3`;
 const CardTitle = styled('div')`bb b--black-70 pv4 flex items-center justify-between`;
 const CardBody = styled('section')`pt4 pb4`;
+const Pagination = styled('div')`flex items-center justify-center`;
+const PageLink = styled(
+  Link
+)`f7 avenir no-underline black bg-animate hover-bg-black hover-white inline-flex items-center pa3 ba border-box mr4`;
 const CompanyBubble = styled(
   'span'
 )`avenir br-100 flex fw6 f3 items-center justify-center bg-washed-blue ba b--light-blue dark-blue h3 w3`;
@@ -109,6 +113,33 @@ export default class PostTemplate extends React.Component {
                 <Time date-time={postNode.fields.date}>{post.date}</Time>
               </CardBody>
               <PostTags tags={post.tags} />
+              <Pagination>
+                <PageLink to={postNode.fields.prevSlug}>
+                  <svg
+                    className="w1"
+                    data-icon="chevronLeft"
+                    viewBox="0 0 32 32"
+                    fill="currentColor"
+                  >
+                    <title>chevronLeft icon</title>
+                    <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z" />
+                  </svg>
+                  {' '}
+                  <span className="pl1">{postNode.fields.prevTitle}</span>
+                </PageLink>
+                <PageLink to={postNode.fields.nextSlug}>
+                  <span className="pr1">{postNode.fields.nextTitle}</span>
+                  <svg
+                    className="w1"
+                    data-icon="chevronRight"
+                    viewBox="0 0 32 32"
+                    fill="currentColor"
+                  >
+                    <title>chevronRight icon</title>
+                    <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z" />
+                  </svg>
+                </PageLink>
+              </Pagination>
             </Card>
           </Article>
         </div>

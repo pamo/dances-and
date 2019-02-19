@@ -26,7 +26,7 @@ function addSiblingNodes(createNodeField) {
     createNodeField({
       node: currNode,
       name: 'nextTitle',
-      value: nextNode.frontmatter.title
+      value: nextNode.frontmatter.artist
     });
     createNodeField({
       node: currNode,
@@ -36,7 +36,7 @@ function addSiblingNodes(createNodeField) {
     createNodeField({
       node: currNode,
       name: 'prevTitle',
-      value: prevNode.frontmatter.title
+      value: prevNode.frontmatter.artist
     });
     createNodeField({
       node: currNode,
