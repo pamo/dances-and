@@ -21,3 +21,5 @@ artists:
   - Deadmau5
 openers: []
 ---
+
+Discovered that deadmau5 was playing on the last night of my stay in Atlanta for Grace Hopper 2010. My dreams were quickly shattered when I discovered it was sold out, but browsing Twitter for any mention of tickets for sale yielded an offer from someone looking to give away ticket for a friend that bailed. Awesome! My first solo show was one to remember.

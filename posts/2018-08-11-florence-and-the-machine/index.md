@@ -20,3 +20,5 @@ artists:
   - Florence and the Machine
 openers: []
 ---
+
+Shout out to Woodhouse Fish Company for letting me volunteer at their lobster roll and oyster stand for a few hours and free entry to the festival!
