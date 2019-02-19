@@ -1,6 +1,6 @@
+import _ from "lodash";
 import { initial, last } from "underscore";
 import { graphql, Link } from "gatsby";
-import { slugify } from "underscore.string";
 import styled from "tachyons-components";
 import React from "react";
 import Helmet from "react-helmet";
@@ -24,7 +24,7 @@ const OpenerComponent = ({ openers }) => {
   if (openers.length > 0) {
     const initialOpeners = initial(openers);
     const lastOpenerName = last(openers);
-    const linkPath = name => `artists/${slugify(name)}`;
+    const linkPath = name => `artists/${_.kebabCase(name)}`;
 
     return (
       <div>

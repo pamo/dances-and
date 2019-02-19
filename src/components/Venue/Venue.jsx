@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import { Link } from 'gatsby';
-import { slugify } from 'underscore.string';
+import React, { Component } from "react";
+import { Link } from "gatsby";
+import _ from "lodash";
 
-import { randomColor } from '../utils';
+import { randomColor } from "../utils";
 
 class Venue extends Component {
   render() {
-    const venue = this.props.venue;
-    const path = `/venues/${slugify(venue)}`;
+    const { venue } = this.props;
+    const path = `/venues/${_.kebabCase(venue)}`;
     return (
       <Link
         to={path}

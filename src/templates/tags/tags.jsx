@@ -1,14 +1,15 @@
-import React from 'react';
-import Helmet from 'react-helmet';
-import { Link } from 'gatsby';
-import { slugify } from 'underscore.string';
-import Layout from '../../layout';
-import SEO from '../../components/SEO/SEO';
-import config from '../../../data/SiteConfig';
+import React from "react";
+import Helmet from "react-helmet";
+import { Link } from "gatsby";
+import _ from "lodash";
+import Layout from "../../layout";
+import SEO from "../../components/SEO/SEO";
+import config from "../../../data/SiteConfig";
 
 class Tags extends React.Component {
   render() {
-    const { tags } = this.props.pageContext;
+    const { pageContext } = this.props;
+    const { tags } = pageContext;
     return (
       <Layout>
         <div className="index-container">
@@ -16,7 +17,7 @@ class Tags extends React.Component {
           <SEO />
           {tags.map(tag => (
             <Link
-              to={`/tags/${slugify(tag)}`}
+              to={`/tags/${_.kebabCase(tag)}`}
               key={tag}
               className="f3 link hover-light-blue b no-underline black dib mr3 mt1 mb1"
             >

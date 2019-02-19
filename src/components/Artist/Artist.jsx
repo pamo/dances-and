@@ -1,12 +1,12 @@
-import { Link } from 'gatsby';
-import React, { Component } from 'react';
-import { slugify } from 'underscore.string';
-import { randomColor } from '../utils';
+import { Link } from "gatsby";
+import React, { Component } from "react";
+import _ from "lodash";
+import { randomColor } from "../utils";
 
 class Artist extends Component {
   render() {
-    const artist = this.props.artist;
-    const path = `/artists/${slugify(artist)}`;
+    const { artist } = this.props;
+    const path = `/artists/${_.kebabCase(artist)}`;
     return (
       <Link
         to={path}
