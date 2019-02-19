@@ -1,9 +1,9 @@
 import { initial, last } from 'underscore';
 import { graphql, Link } from 'gatsby';
 import { slugify } from 'underscore.string';
+import styled from 'tachyons-components';
 import React from 'react';
 import Helmet from 'react-helmet';
-import styled from 'tachyons-components';
 
 import config from '../../data/SiteConfig';
 import Artist from '../components/Artist/Artist';
@@ -12,18 +12,20 @@ import SEO from '../components/SEO/SEO';
 import Venue from '../components/Venue/Venue';
 import Layout from '../layout';
 
-const linkToLastFM = artist => `${config.lastfm.url}${encodeURI(artist).replace(/%20/g, '+')}`;
-
 const LocationComponent = ({ city, state, country }) => {
   return (
-    <div>
-      <div>
+    <div className="f5">
+      <span>
         {city}
 ,
+      </span>
+      {' '}
+      <span>
         {state}
 ,
-        {country}
-      </div>
+      </span>
+      {' '}
+      {country}
     </div>
   );
 };
@@ -44,7 +46,7 @@ const OpenerComponent = ({ openers }) => {
           </Link>
         ))}
         {' '}
-        { openers.length > 1 ? 'and' : null }
+        {openers.length > 1 ? 'and' : null}
         {' '}
         {
           <Link to={linkPath(lastOpenerName)} key={lastOpenerName}>
@@ -56,17 +58,21 @@ const OpenerComponent = ({ openers }) => {
   }
   return null;
 };
-const Article = styled('article')`bg-white center mw5 ba b--black-10 mv4`;
-const Time = styled('time')`gray db pv2`;
+const Article = styled('article')`article-full-bleed-background`;
+const Time = styled('time')`gray db pv2 f6 ttu avenir`;
 const Headliner = styled('h1')`f6 ttu tracked`;
-const CardTitle = styled('div')`pv2 ph3`;
-const CardBody = styled('div')`pa3`;
-const LastFmLink = styled('a')`link dim lh-title`;
+const Card = styled('div')`fl pa3 pa4-ns bg-white black-70 measure-narrow f3`;
+const CardTitle = styled('div')`bb b--black-70 pv4 flex items-center justify-between`;
+const CardBody = styled('section')`pt4 pb4`;
+const CompanyBubble = styled(
+  'span'
+)`avenir br-100 flex fw6 f3 items-center justify-center bg-washed-blue ba b--light-blue dark-blue h3 w3`;
 
 export default class PostTemplate extends React.Component {
   render() {
     const { slug } = this.props.pageContext;
     const postNode = this.props.data.markdownRemark;
+    const year = new Date(postNode.fields.date).getFullYear();
     const post = postNode.frontmatter;
     if (!post.id) {
       post.id = slug;
@@ -79,30 +85,31 @@ export default class PostTemplate extends React.Component {
           </Helmet>
           <SEO postPath={slug} postNode={postNode} postSEO />
           <Article>
-            <CardTitle>
-              <Headliner>
-                {' '}
-                <Artist artist={post.artist} />
-                {' '}
-              </Headliner>
-              <Venue venue={post.venue} />
-              <OpenerComponent openers={post.openers} />
-            </CardTitle>
-            <CardBody>
-              <LocationComponent city={post.city} state={post.state} country={post.country} />
+            <Card>
+              <CardTitle>
+                <div>
+                  <Headliner>
+                    {' '}
+                    <Artist artist={post.artist} />
+                    {' '}
+                  </Headliner>
+                  <OpenerComponent openers={post.openers} />
+                </div>
+                <div className="tc">
+                  <CompanyBubble>{post.solo === 'Yes' ? 'solo' : '+1'}</CompanyBubble>
+                </div>
+              </CardTitle>
+              <CardBody>
+                <Venue venue={post.venue} />
+                <LocationComponent city={post.city} state={post.state} country={post.country} />
+                <div>{post.price}</div>
+                <div>{post.genre}</div>
 
-              <div>{post.price}</div>
-              <div>{post.genre}</div>
-              <div>{post.solo === 'Yes' ? 'a solo adventure' : 'with a concert buddy'}</div>
-              <Time date-time={postNode.fields.date}>{post.date}</Time>
-              <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
-
-              <LastFmLink href={linkToLastFM(post.artist)} target="_blank">
-                Last.fm listening history
-              </LastFmLink>
-
+                <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
+                <Time date-time={postNode.fields.date}>{post.date}</Time>
+              </CardBody>
               <PostTags tags={post.tags} />
-            </CardBody>
+            </Card>
           </Article>
         </div>
       </Layout>
