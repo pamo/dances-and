@@ -1,31 +1,21 @@
-import { initial, last } from 'underscore';
-import { graphql, Link } from 'gatsby';
-import { slugify } from 'underscore.string';
-import styled from 'tachyons-components';
-import React from 'react';
-import Helmet from 'react-helmet';
+import { initial, last } from "underscore";
+import { graphql, Link } from "gatsby";
+import { slugify } from "underscore.string";
+import styled from "tachyons-components";
+import React from "react";
+import Helmet from "react-helmet";
 
-import config from '../../data/SiteConfig';
-import Artist from '../components/Artist/Artist';
-import PostTags from '../components/PostTags/PostTags';
-import SEO from '../components/SEO/SEO';
-import Venue from '../components/Venue/Venue';
-import Layout from '../layout';
+import config from "../../data/SiteConfig";
+import Artist from "../components/Artist/Artist";
+import PostTags from "../components/PostTags/PostTags";
+import SEO from "../components/SEO/SEO";
+import Venue from "../components/Venue/Venue";
+import Layout from "../layout";
 
 const LocationComponent = ({ city, state, country }) => {
   return (
     <div className="f5">
-      <span>
-        {city}
-,
-      </span>
-      {' '}
-      <span>
-        {state}
-,
-      </span>
-      {' '}
-      {country}
+      <span>{city},</span> <span>{state},</span> {country}
     </div>
   );
 };
@@ -38,16 +28,13 @@ const OpenerComponent = ({ openers }) => {
 
     return (
       <div>
-        with
-        {' '}
+        with{" "}
         {initialOpeners.map(opener => (
           <Link to={linkPath(opener)} key={opener}>
             {opener}
           </Link>
-        ))}
-        {' '}
-        {openers.length > 1 ? 'and' : null}
-        {' '}
+        ))}{" "}
+        {openers.length > 1 ? "and" : null}{" "}
         {
           <Link to={linkPath(lastOpenerName)} key={lastOpenerName}>
             {lastOpenerName}
@@ -58,25 +45,28 @@ const OpenerComponent = ({ openers }) => {
   }
   return null;
 };
-const Article = styled('article')`article-full-bleed-background`;
-const Time = styled('time')`gray db pv2 f6 ttu avenir`;
-const Headliner = styled('h1')`f6 ttu tracked`;
-const Card = styled('div')`fl pa3 pa4-ns bg-white black-70 measure-narrow f3`;
-const CardTitle = styled('div')`bb b--black-70 pv4 flex items-center justify-between`;
-const CardBody = styled('section')`pt4 pb4`;
-const Pagination = styled('div')`flex items-center justify-center`;
+const Article = styled("article")`article-full-bleed-background`;
+const Time = styled("time")`gray db pv2 f6 ttu avenir`;
+const Headliner = styled("h1")`f6 ttu tracked`;
+const Card = styled("div")`fl pa3 pa4-ns bg-white black-70 measure-narrow f3`;
+const CardTitle = styled(
+  "div"
+)`bb b--black-70 pv4 flex items-center justify-between`;
+const CardBody = styled("section")`pt4 pb4`;
+const Pagination = styled("div")`flex items-center justify-center`;
 const PageLink = styled(
   Link
 )`f7 avenir no-underline black bg-animate hover-bg-black hover-white inline-flex items-center pa3 ba border-box mr4`;
 const CompanyBubble = styled(
-  'span'
+  "span"
 )`avenir br-100 flex fw6 f3 items-center justify-center bg-washed-blue ba b--light-blue dark-blue h3 w3`;
 
 export default class PostTemplate extends React.Component {
   render() {
-    const { slug } = this.props.pageContext;
-    const postNode = this.props.data.markdownRemark;
-    const year = new Date(postNode.fields.date).getFullYear();
+    const { pageContext, data } = this.props;
+    const { slug } = pageContext;
+    const postNode = data.markdownRemark;
+    // const year = new Date(postNode.fields.date).getFullYear();
     const post = postNode.frontmatter;
     if (!post.id) {
       post.id = slug;
@@ -93,23 +83,32 @@ export default class PostTemplate extends React.Component {
               <CardTitle>
                 <div>
                   <Headliner>
-                    {' '}
-                    <Artist artist={post.artist} />
-                    {' '}
+                    {" "}
+                    <Artist artist={post.artist} />{" "}
                   </Headliner>
                   <OpenerComponent openers={post.openers} />
                 </div>
                 <div className="tc">
-                  <CompanyBubble>{post.solo === 'Yes' ? 'solo' : '+1'}</CompanyBubble>
+                  <CompanyBubble>
+                    {post.solo === "Yes" ? "solo" : "+1"}
+                  </CompanyBubble>
                 </div>
               </CardTitle>
               <CardBody>
+                <div>{post.festival}</div>
                 <Venue venue={post.venue} />
-                <LocationComponent city={post.city} state={post.state} country={post.country} />
+                <LocationComponent
+                  city={post.city}
+                  state={post.state}
+                  country={post.country}
+                />
                 <div>{post.price}</div>
                 <div>{post.genre}</div>
 
-                <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
+                <div
+                  dangerouslySetInnerHTML={{ __html: postNode.html }}
+                  className="lh-copy mt3 f5 measure"
+                />
                 <Time date-time={postNode.fields.date}>{post.date}</Time>
               </CardBody>
               <PostTags tags={post.tags} />
@@ -123,8 +122,7 @@ export default class PostTemplate extends React.Component {
                   >
                     <title>chevronLeft icon</title>
                     <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z" />
-                  </svg>
-                  {' '}
+                  </svg>{" "}
                   <span className="pl1">{postNode.fields.prevTitle}</span>
                 </PageLink>
                 <PageLink to={postNode.fields.nextSlug}>
