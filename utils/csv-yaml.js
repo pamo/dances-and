@@ -1,17 +1,7 @@
-const csv = require('csv-parser');
-const _ = require('underscore.string');
-const fs = require('fs');
-const yaml = require('js-yaml');
-const mkdirp = require('mkdirp');
-const format = require('date-fns/format');
-
-const formatDate = date => format(date, 'MM/DD/YYYY');
-const createDirectory = ({ date, artist }) => {
-  const path = _.slugify(`${date}-${artist}`);
-  const dir = `./posts/${path}`;
-  mkdirp.sync(dir);
-  return { path, dir };
-};
+const csv = require("csv-parser");
+const fs = require("fs");
+const yaml = require("js-yaml");
+const { createDirectory, formatDate } = require("./shared");
 
 let count = 0;
 const parseRow = data => {
@@ -41,9 +31,9 @@ const parseRow = data => {
 
   json.title = `${data.artist} at ${data.venue}`;
   json.slug = path;
-  json.cover = '';
-  json.genre = '';
-  json.category = 'show';
+  json.cover = "";
+  json.genre = "";
+  json.category = "show";
   json.tags = [];
   json.created = formatDate(new Date());
 
@@ -56,29 +46,30 @@ const parseRow = data => {
   json.openers = openers;
 
   if (!data.price) {
-    json.price = 'unknown';
-    json.tags.push('unknown price');
+    json.price = "unknown";
+    json.tags.push("unknown price");
   }
-  if (data.price === '$0.00') {
-    json.price = 'free';
-    json.tags.push('free show');
+  if (data.price === "$0.00") {
+    json.price = "free";
+    json.tags.push("free show");
   }
-  if (data.solo === 'Yes') json.tags.push('solo show');
+  if (data.solo === "Yes") json.tags.push("solo show");
 
   const postFileStr = `---
 ${yaml.safeDump(json)}---`;
 
   fs.writeFileSync(`${dir}/index.md`, postFileStr, {
-    encoding: 'utf-8'
+    encoding: "utf-8"
   });
+
   count += 1;
   console.table(json);
   console.log(dir);
 };
 
-fs.createReadStream('shows.csv')
+fs.createReadStream("shows.csv")
   .pipe(csv())
-  .on('data', parseRow)
-  .on('end', () => {
+  .on("data", parseRow)
+  .on("end", () => {
     console.log(`created ${count} entries`);
   });
