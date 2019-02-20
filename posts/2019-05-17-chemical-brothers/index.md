@@ -14,7 +14,6 @@ cover: ""
 genre: ""
 category: show
 tags:
-  - unknown price
   - solo show
 created: 02/15/2019
 artists:
