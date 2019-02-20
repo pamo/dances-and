@@ -6,7 +6,7 @@ venue: Bill Graham Civic Auditorium
 city: San Francisco
 state: CA
 country: USA
-price: unknown
+price: $65.00
 solo: "Yes"
 title: Chemical Brothers at Bill Graham Civic Auditorium
 slug: 2019-05-17-chemical-brothers
