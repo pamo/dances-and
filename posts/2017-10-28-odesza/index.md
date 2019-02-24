@@ -23,3 +23,7 @@ openers:
   - Chet Faker
   - Sofi Tukker
 ---
+
+Cold night after the sun went down but we bundled up well ⛄️
+
+![cold selfie](odesza_selfie.jpg)
