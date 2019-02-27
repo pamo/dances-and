@@ -17,5 +17,8 @@ tags: []
 created: 02/15/2019
 artists:
   - "Peter, Bjorn, John"
-openers: []
+  - "Talos"
+openers: ["Talos"]
 ---
+
+<iframe src="https://open.spotify.com/embed/user/pmocampo/playlist/5AjXh9KbnkTQsZsFOgmytY" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
