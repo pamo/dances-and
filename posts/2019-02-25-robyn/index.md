@@ -6,7 +6,7 @@ venue: The Fox Theater
 city: Oakland
 state: CA
 country: USA
-price: $143
+price: $71.50
 solo: "n"
 title: Robyn at The Fox Theater
 slug: 2019-02-25-robyn
