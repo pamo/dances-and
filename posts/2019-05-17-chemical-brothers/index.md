@@ -7,14 +7,13 @@ city: San Francisco
 state: CA
 country: USA
 price: $65.00
-solo: "Yes"
+solo: "n"
 title: Chemical Brothers at Bill Graham Civic Auditorium
 slug: 2019-05-17-chemical-brothers
 cover: ""
 genre: ""
 category: show
 tags:
-  - solo show
 created: 02/15/2019
 artists:
   - Chemical Brothers
