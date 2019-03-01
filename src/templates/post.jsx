@@ -30,10 +30,13 @@ const OpenerComponent = ({ openers }) => {
       <div>
         with{" "}
         {initialOpeners.map(opener => (
-          <Link to={linkPath(opener)} key={opener}>
-            {opener}
-          </Link>
-        ))}{" "}
+          <span>
+            <Link to={linkPath(opener)} key={opener}>
+              {opener}
+            </Link>
+            {", "}
+          </span>
+        ))}
         {openers.length > 1 ? "and" : null}{" "}
         {
           <Link to={linkPath(lastOpenerName)} key={lastOpenerName}>
