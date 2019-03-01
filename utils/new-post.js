@@ -79,8 +79,7 @@ prompt.get(
     }
     if (solo === "y") json.tags.push("solo show");
 
-    const postFileStr = `---
-  ${yaml.safeDump(json)}---`;
+    const postFileStr = `---\n${yaml.safeDump(json)}---`;
 
     fs.writeFileSync(`${dir}/index.md`, postFileStr, {
       encoding: "utf-8"
