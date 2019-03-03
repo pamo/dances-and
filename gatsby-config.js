@@ -24,6 +24,14 @@ module.exports = {
       }
     },
     {
+      resolve: 'gatsby-source-lastfm',
+      options: {
+        api_key: '1c677539575b078934a010456ed8c052',
+        username: 'Psyc-adelick',
+        limit: 20000 // the maximum number of playbacks to pull in
+      }
+    },
+    {
       resolve: `gatsby-plugin-typography`,
       options: {
         pathToConfigModule: `utils/typography`

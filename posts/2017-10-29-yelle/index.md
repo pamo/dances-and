@@ -17,7 +17,7 @@ tags: []
 created: 02/15/2019
 artists:
   - Yelle
-  - Lewis Ofman
+  - Lewis OfMan
 openers:
-  - Lewis Ofman
+  - Lewis OfMan
 ---

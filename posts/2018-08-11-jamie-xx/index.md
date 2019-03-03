@@ -1,6 +1,6 @@
 ---
 date: "2018-08-11"
-artist: Jamie XX
+artist: Jamie xx
 festival: Outside Lands
 venue: Golden Gate Park
 city: San Francisco
@@ -8,7 +8,7 @@ state: CA
 country: USA
 price: free
 solo: "No"
-title: Jamie XX at Golden Gate Park
+title: Jamie xx at Golden Gate Park
 slug: 2018-08-11-jamie-xx
 cover: ""
 genre: ""
@@ -17,7 +17,7 @@ tags:
   - free show
 created: 02/15/2019
 artists:
-  - Jamie XX
+  - Jamie xx
 openers: []
 ---
 
