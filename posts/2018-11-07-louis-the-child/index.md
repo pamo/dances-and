@@ -19,8 +19,8 @@ created: 02/15/2019
 artists:
   - Louis the Child
   - Nombe
-  - R.LUM.R
+  - R.Lum.R
 openers:
   - Nombe
-  - R.LUM.R
+  - R.Lum.R
 ---
