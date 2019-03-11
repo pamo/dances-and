@@ -26,3 +26,7 @@ openers:
   - Gilligan Moss
   - Qrion
 ---
+
+I had no expectations but Tourist totally blew me away. I Shazamed half the night mid dancing.
+
+<iframe src="https://open.spotify.com/embed/user/pmocampo/playlist/30uTwNj5RR8S2MgeJE295a" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
