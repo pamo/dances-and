@@ -51,10 +51,12 @@ const OpenerComponent = ({ openers }) => {
 const Article = styled("article")`article-full-bleed-background`;
 const Time = styled("time")`gray db pv2 f6 ttu avenir`;
 const Headliner = styled("h1")`f6 ttu tracked`;
-const Card = styled("div")`fl pa3 pa4-ns bg-white black-70 measure-narrow f3`;
+const Card = styled(
+  "div"
+)`fl pa3 pt0 pa4-ns bg-white black-70 measure-narrow f3`;
 const CardTitle = styled(
   "div"
-)`bb b--black-70 pv4 flex items-center justify-between`;
+)`bb b--black-70 pb4 flex items-center justify-between`;
 const CardBody = styled("section")`pt4 pb4`;
 const Pagination = styled("div")`flex items-center justify-center`;
 const PageLink = styled(
@@ -62,14 +64,13 @@ const PageLink = styled(
 )`f7 avenir no-underline black bg-animate hover-bg-black hover-white inline-flex items-center pa3 ba border-box mr4`;
 const CompanyBubble = styled(
   "span"
-)`avenir br-100 flex fw6 f3 items-center justify-center bg-washed-blue ba b--light-blue dark-blue h3 w3`;
+)`avenir br-100 flex fw6 f6 items-center justify-center bg-washed-blue ba b--light-blue dark-blue h3 w3`;
 
 export default class PostTemplate extends React.Component {
   render() {
     const { pageContext, data } = this.props;
     const { slug } = pageContext;
     const postNode = data.markdownRemark;
-    // const year = new Date(postNode.fields.date).getFullYear();
     const post = postNode.frontmatter;
     if (!post.id) {
       post.id = slug;
@@ -93,7 +94,7 @@ export default class PostTemplate extends React.Component {
                 </div>
                 <div className="tc">
                   <CompanyBubble>
-                    {post.solo === "Yes" ? "solo" : "+1"}
+                    {post.solo === "Yes" ? "solo" : "with friends"}
                   </CompanyBubble>
                 </div>
               </CardTitle>
@@ -127,6 +128,17 @@ export default class PostTemplate extends React.Component {
                     <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z" />
                   </svg>{" "}
                   <span className="pl1">{postNode.fields.prevTitle}</span>
+                </PageLink>
+                <PageLink to="/" className="flex flex-column">
+                  <svg
+                    className="w1"
+                    data-icon="home"
+                    viewBox="0 0 32 32"
+                    fill="currentcolor"
+                  >
+                    <title>home icon</title>
+                    <path d="M16 0 L32 16 L28 16 L28 30 L20 30 L20 20 L12 20 L12 30 L4 30 L4 16 L0 16 Z" />
+                  </svg>
                 </PageLink>
                 <PageLink to={postNode.fields.nextSlug}>
                   <span className="pr1">{postNode.fields.nextTitle}</span>

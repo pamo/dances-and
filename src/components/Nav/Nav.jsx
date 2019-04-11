@@ -14,7 +14,7 @@ class Nav extends Component {
         <NavItems>
           {pages.map(page => (
             <Link
-              to={page === "headliners" ? "" : page}
+              to={page === "shows" ? "" : page}
               key={page}
               activeClassName="underline dark-blue i"
               className="link dim blue dib mr3"
