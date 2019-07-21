@@ -18,6 +18,8 @@ created: 02/23/2019
 artists:
   - RÜFÜS DU SOL
   - The Acid
+  - Cassian
 openers:
   - The Acid
+  - Cassian
 ---
