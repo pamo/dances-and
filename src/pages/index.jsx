@@ -32,9 +32,9 @@ class Index extends React.Component {
           <SEO />
           <Hero />
           <Nav />
-          <h1 className="pl3 pr3">Upcoming Shows</h1>
+          <h1 className="pl3 pr3">{future.length} Upcoming Shows</h1>
           <PostListing postEdges={future} />
-          <h1 className="pl3 pr3">Past Shows</h1>
+          <h1 className="pl3 pr3">{past.length} Past Shows</h1>
           <PostListing postEdges={past} />
         </div>
         <Footer config={config} />
