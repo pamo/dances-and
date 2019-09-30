@@ -1,6 +1,6 @@
 ---
 date: "2019-12-19"
-artist: SebastiAn
+artist: Sebastian
 festival: ""
 venue: Great American Music Hall
 city: San Francisco
@@ -16,6 +16,6 @@ category: show
 tags: []
 created: 09/29/2019
 artists:
-  - SebastiAn
+  - Sebastian
 openers: []
 ---

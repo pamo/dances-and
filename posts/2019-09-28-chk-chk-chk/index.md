@@ -7,7 +7,7 @@ city: San Franciso
 state: CA
 country: USA
 price: $23
-solo: "n"
+solo: "no"
 title: "!!! at The Chapel"
 slug: "2019-09-28"
 cover: ""
@@ -17,5 +17,6 @@ tags: []
 created: 07/13/2019
 artists:
   - "!!!"
-openers: []
+  - "The Umbrellas"
+openers: ["The Umbrellas"]
 ---

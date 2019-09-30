@@ -17,5 +17,6 @@ tags: []
 created: 05/11/2019
 artists:
   - Hot Chip
-openers: []
+  - Holy Fuck
+openers: ["Holy Fuck"]
 ---
