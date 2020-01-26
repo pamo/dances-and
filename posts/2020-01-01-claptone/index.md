@@ -21,9 +21,13 @@ artists:
   - Moon Boots
   - Boys Noize
   - Jeremy Olander
+  - Eli & Fur
 openers:
   - Walker & Royce
   - Moon Boots
   - Boys Noize
+  - Eli & Fur
   - Jeremy Olander
 ---
+
+I was too tired for this one to stay for the whole thing. Moon Boots was a blast. Sad Boys Noize cancelled because of illness but that was more motivation for me to go home early and rest.
