@@ -1,5 +1,5 @@
 ---
-date: 01-01-2020
+date: "2020-01-01"
 artist: Claptone
 festival: Fresh Start
 venue: The Midway

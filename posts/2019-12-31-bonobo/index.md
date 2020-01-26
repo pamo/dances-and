@@ -1,5 +1,5 @@
 ---
-date: 12-31-2019
+date: "2019-12-31"
 artist: Bonobo
 festival: ""
 venue: The Midway
