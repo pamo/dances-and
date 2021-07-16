@@ -49,7 +49,7 @@
     "tachyons-components": "^1.0.1",
     "typography": "^0.16.18",
     "typography-theme-lawton": "^0.16.18",
-    "underscore": "^1.9.1",
+    "underscore": "^1.12.1",
     "underscore.string": "^3.3.5",
     "url-join": "^4.0.0"
   },
