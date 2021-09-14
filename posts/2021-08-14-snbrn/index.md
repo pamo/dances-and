@@ -6,7 +6,7 @@ venue: 1015 Folsom
 city: San Francisco
 state: CA
 country: USA
-price: unknown
+price: $20
 solo: "n"
 title: SNBRN at 1015 Folsom
 slug: 2021-08-14-snbrn
