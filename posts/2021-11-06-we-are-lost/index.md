@@ -1,7 +1,7 @@
 ---
 date: "2021-11-06"
 artist: We Are Lo&t
-festival: Get Lo&t Festival
+festival: Get Lo&t
 venue: The San Francisco MINT
 city: San Francisco
 state: CA
