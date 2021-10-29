@@ -6,7 +6,7 @@ venue: Bridge Yard
 city: Oakland
 state: CA
 country: USA
-price: unknown
+price: $50
 solo: "n"
 title: Black at Bridge Yard
 slug: 2021-10-16-black-coffee
@@ -14,7 +14,6 @@ cover: ""
 genre: ""
 category: show
 tags:
-  - unknown price
 created: 09/14/2021
 artists:
   - Black
