@@ -2,13 +2,13 @@
 date: "2019-09-25"
 artist: Hot Chip
 festival: ""
-venue: Fox Theater
+venue: The Fox Theater
 city: Oakland
 state: CA
 country: USA
 price: $45
 solo: "n"
-title: Hot Chip at Fox Theater
+title: Hot Chip at The Fox Theater
 slug: 2019-09-25-hot-chip
 cover: ""
 genre: ""
