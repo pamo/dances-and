@@ -1,5 +1,5 @@
 ---
-date: "2022-01-29"
+date: "2022-07-09"
 artist: Flight Facilities
 festival: ""
 venue: The Warfield
@@ -9,7 +9,7 @@ country: USA
 price: $47.50
 solo: "y"
 title: Flight Facilities at The Warfield
-slug: 2022-01-29-flight-facilities
+slug: 2022-07-09-flight-facilities
 cover: ""
 genre: ""
 category: show
