@@ -30,7 +30,7 @@
     "gatsby-remark-responsive-iframe": "2.0.9",
     "gatsby-source-filesystem": "2.0.20",
     "gatsby-source-lastfm": "^0.1.2",
-    "gatsby-transformer-remark": "2.2.5",
+    "gatsby-transformer-remark": "5.25.1",
     "gatsby-transformer-sharp": "2.2.14",
     "js-yaml": "^3.12.1",
     "lodash": "^4.17.21",
