@@ -1,4 +1,0 @@
-User-agent: *
-Disallow: */tags/
-
-sitemap: https://dances-and.likescoffee.com/sitemap.xml

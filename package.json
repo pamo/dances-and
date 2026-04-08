@@ -1,115 +1,44 @@
 {
-  "name": "dances-and-likescoffee",
-  "description": "GatsbyJS starter used to track concerts",
-  "version": "1.1.0",
-  "author": "Pamela Ocampo <pamela.ocampo@gmail.com>",
+  "name": "dances-and",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "migrate": "npx tsx scripts/migrate.ts"
+  },
   "dependencies": {
-    "@emotion/core": "^10.0.7",
-    "@emotion/styled": "^10.0.7",
-    "csv-parser": "^2.1.0",
-    "date-fns": "^1.30.1",
-    "gatsby": "2.1.2",
-    "gatsby-image": "^2.0.29",
-    "gatsby-plugin-catch-links": "2.0.11",
-    "gatsby-plugin-emotion": "^4.0.3",
-    "gatsby-plugin-feed": "2.0.13",
-    "gatsby-plugin-google-analytics": "2.0.14",
-    "gatsby-plugin-lodash": "3.0.4",
-    "gatsby-plugin-manifest": "2.0.17",
-    "gatsby-plugin-nprogress": "2.0.8",
-    "gatsby-plugin-offline": "2.0.23",
-    "gatsby-plugin-react-helmet": "3.0.6",
-    "gatsby-plugin-sharp": "2.2.14",
-    "gatsby-plugin-sitemap": "2.0.5",
-    "gatsby-plugin-twitter": "2.0.9",
-    "gatsby-plugin-typography": "^2.2.7",
-    "gatsby-remark-autolink-headers": "2.0.14",
-    "gatsby-remark-copy-linked-files": "2.0.9",
-    "gatsby-remark-images": "3.0.4",
-    "gatsby-remark-prismjs": "3.2.4",
-    "gatsby-remark-responsive-iframe": "2.0.9",
-    "gatsby-source-filesystem": "2.0.20",
-    "gatsby-source-lastfm": "^0.1.2",
-    "gatsby-transformer-remark": "2.2.5",
-    "gatsby-transformer-sharp": "2.2.14",
-    "js-yaml": "^3.12.1",
-    "lodash": "^4.17.21",
-    "mkdirp": "^0.5.1",
-    "moment": "^2.23.0",
-    "prismjs": "^1.24.0",
-    "prompt": "^1.0.0",
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0",
-    "react-helmet": "^5.2.0",
-    "react-share": "^2.4.0",
-    "react-twitter-widgets": "^1.7.1",
-    "react-typography": "^0.16.18",
-    "sharp": "^0.21.3",
-    "tachyons": "^4.10.0",
-    "tachyons-components": "^1.0.1",
-    "typography": "^0.16.18",
-    "typography-theme-lawton": "^0.16.18",
-    "underscore": "^1.12.1",
-    "underscore.string": "^3.3.5",
-    "url-join": "^4.0.0"
+    "@base-ui/react": "^1.3.0",
+    "@sanity/image-url": "^2.1.1",
+    "@sanity/vision": "^5.20.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "date-fns": "^4.1.0",
+    "dotenv": "^17.4.1",
+    "lucide-react": "^1.7.0",
+    "next": "16.2.2",
+    "next-sanity": "^12.2.2",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "sanity": "^5.20.0",
+    "shadcn": "^4.2.0",
+    "styled-components": "^6.3.12",
+    "tailwind-merge": "^3.5.0",
+    "tw-animate-css": "^1.4.0"
   },
   "devDependencies": {
-    "cli-glob": "^0.1.0",
-    "eslint": "^5.12.1",
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-config-prettier": "^4.0.0",
-    "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-jsx-a11y": "^6.1.2",
-    "eslint-plugin-react": "^7.12.4",
-    "gh-pages": "^2.0.1",
-    "husky": "^1.3.1",
-    "lint-staged": "^8.1.4",
-    "prettier": "^1.16.0",
-    "remark-cli": "^6.0.1",
-    "remark-preset-lint-recommended": "^3.0.1",
-    "stylefmt": "^6.0.3",
-    "stylelint": "^9.10.1",
-    "stylelint-config-standard": "^18.0.0",
-    "write-good": "^1.0.1"
-  },
-  "keywords": [
-    "gatsby"
-  ],
-  "license": "MIT",
-  "main": "n/a",
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.md": [
-      "prettier --write",
-      "git add"
-    ],
-    "*.{js,jsx}": [
-      "eslint --fix",
-      "prettier --write",
-      "git add"
-    ]
-  },
-  "scripts": {
-    "develop": "gatsby develop",
-    "dev": "npm run develop",
-    "serve": "gatsby serve",
-    "build": "gatsby build",
-    "build:pp": "gatsby build --prefix-paths",
-    "build:gh": "npm run clean && npm run build:pp && gh-pages -d public",
-    "clean": "rm -rf public && rm -rf .cache",
-    "lint:js": "eslint --ext .js,.jsx .",
-    "lint:md": "remark posts/ && prettier --write posts/**/*.md",
-    "write-good": "write-good $(glob 'posts/**/*.md')",
-    "format:js": "prettier '**/*.{js,jsx}' --write",
-    "entry": "node utils/new-post.js"
-  },
-  "remarkConfig": {
-    "plugins": [
-      "remark-preset-lint-recommended"
-    ]
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.2",
+    "glob": "^13.0.6",
+    "gray-matter": "^4.0.3",
+    "tailwindcss": "^4",
+    "tsx": "^4.21.0",
+    "typescript": "^5"
   }
 }
