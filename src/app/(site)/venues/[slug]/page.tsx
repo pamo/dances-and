@@ -47,6 +47,18 @@ export default async function VenuePage({
     { id: venue._id }
   );
 
+  // Count visits, deduplicating festival shows on the same date
+  const visitDates = new Set<string>();
+  let visits = 0;
+  for (const s of shows) {
+    if (s.festival) {
+      const key = s.date;
+      if (visitDates.has(key)) continue;
+      visitDates.add(key);
+    }
+    visits++;
+  }
+
   return (
     <main className="mx-auto max-w-6xl px-4 py-8">
       <Link
@@ -74,7 +86,7 @@ export default async function VenuePage({
       </header>
 
       <h2 className="mb-4 text-xl font-semibold">
-        {shows.length} Show{shows.length !== 1 && "s"}
+        {visits} Visit{visits !== 1 && "s"} &middot; {shows.length} Set{shows.length !== 1 && "s"}
       </h2>
       <ShowGrid shows={shows} />
     </main>

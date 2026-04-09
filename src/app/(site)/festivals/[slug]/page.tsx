@@ -44,11 +44,8 @@ export default async function FestivalPage({
     { id: fest._id }
   );
 
-  // Calculate total spent at this festival
-  const totalPrice = shows.reduce(
-    (sum, s) => sum + (s.price ?? 0),
-    0
-  );
+  // Count unique attendance days (not individual sets)
+  const uniqueDays = new Set(shows.map((s) => s.date)).size;
 
   return (
     <main className="mx-auto max-w-6xl px-4 py-8">
@@ -62,8 +59,7 @@ export default async function FestivalPage({
       <header className="mt-6 mb-8">
         <h1 className="text-4xl font-bold tracking-tight">{fest.name}</h1>
         <p className="mt-2 text-zinc-500">
-          {shows.length} show{shows.length !== 1 && "s"} &middot; $
-          ${totalPrice.toFixed(0)} spent
+          {uniqueDays} day{uniqueDays !== 1 && "s"} &middot; {shows.length} set{shows.length !== 1 && "s"}
         </p>
         {fest.website && (
           <a

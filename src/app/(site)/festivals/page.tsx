@@ -4,22 +4,30 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = { title: "Festivals" };
 
-type FestivalWithCount = {
+type FestivalWithShows = {
   _id: string;
   name: string;
   slug: { current: string };
-  showCount: number;
+  shows: { date: string }[];
 };
 
 export default async function FestivalsPage() {
-  const festivals = await client.fetch<FestivalWithCount[]>(
+  const festivals = await client.fetch<FestivalWithShows[]>(
     `*[_type == "festival"] {
       _id,
       name,
       slug,
-      "showCount": count(*[_type == "show" && festival._ref == ^._id])
-    } | order(showCount desc, name asc)`
+      "shows": *[_type == "show" && festival._ref == ^._id] { date }
+    } | order(name asc)`
   );
+
+  const festivalsWithCounts = festivals
+    .map((f) => ({
+      ...f,
+      days: new Set(f.shows.map((s) => s.date)).size,
+      sets: f.shows.length,
+    }))
+    .sort((a, b) => b.days - a.days);
 
   return (
     <main className="mx-auto max-w-6xl px-4 py-8">
@@ -27,7 +35,7 @@ export default async function FestivalsPage() {
         {festivals.length} Festivals
       </h1>
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-        {festivals.map((fest) => (
+        {festivalsWithCounts.map((fest) => (
           <Link
             key={fest._id}
             href={`/festivals/${fest.slug.current}`}
@@ -37,7 +45,7 @@ export default async function FestivalsPage() {
               {fest.name}
             </span>
             <span className="text-sm text-zinc-400">
-              {fest.showCount} show{fest.showCount !== 1 && "s"}
+              {fest.days} day{fest.days !== 1 && "s"} &middot; {fest.sets} set{fest.sets !== 1 && "s"}
             </span>
           </Link>
         ))}
