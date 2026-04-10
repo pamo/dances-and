@@ -1,4 +1,4 @@
-import { client } from "@/sanity/client";
+import { cachedFetch } from "@/sanity/client";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
@@ -46,26 +46,25 @@ type NavShow = {
   date: string;
 };
 
-const SHOW_QUERY = `*[_type == "show" && slug.current == $slug][0] {
-  _id,
-  title,
-  date,
-  slug,
-  price,
-  solo,
-  tags,
-  companions,
-  rating,
-  notes,
-  artist->{name, slug, genres, lastfmUrl},
-  venue->{name, slug, city, state, country},
-  festival->{name, slug},
-  openers[]->{name, slug}
-}`;
-
-const NAV_QUERY = `{
-  "prev": *[_type == "show" && date < $date] | order(date desc)[0] { slug, date, artist->{name} },
-  "next": *[_type == "show" && date > $date] | order(date asc)[0] { slug, date, artist->{name} }
+const SHOW_WITH_NAV_QUERY = `{
+  "show": *[_type == "show" && slug.current == $slug][0] {
+    _id,
+    "title": coalesce(title, artist->name + " at " + venue->name),
+    date,
+    slug,
+    price,
+    solo,
+    tags,
+    companions,
+    rating,
+    notes,
+    artist->{name, slug, genres, lastfmUrl},
+    venue->{name, slug, city, state, country},
+    festival->{name, slug},
+    openers[]->{name, slug}
+  },
+  "prev": *[_type == "show" && date < *[_type == "show" && slug.current == $slug][0].date] | order(date desc)[0] { slug, artist->{name} },
+  "next": *[_type == "show" && date > *[_type == "show" && slug.current == $slug][0].date] | order(date asc)[0] { slug, artist->{name} }
 }`;
 
 export async function generateMetadata({
@@ -74,7 +73,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const show = await client.fetch<Show | null>(SHOW_QUERY, { slug });
+  const { show } = await cachedFetch<{ show: Show | null }>(SHOW_WITH_NAV_QUERY, { slug });
   if (!show) return { title: "Show not found" };
 
   return {
@@ -94,14 +93,13 @@ export default async function ShowPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const show = await client.fetch<Show | null>(SHOW_QUERY, { slug });
-
-  if (!show) notFound();
-
-  const { prev, next } = await client.fetch<{
+  const { show, prev, next } = await cachedFetch<{
+    show: Show | null;
     prev: NavShow | null;
     next: NavShow | null;
-  }>(NAV_QUERY, { date: show.date });
+  }>(SHOW_WITH_NAV_QUERY, { slug });
+
+  if (!show) notFound();
 
   const date = new Date(show.date + "T00:00:00");
 

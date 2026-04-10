@@ -1,4 +1,4 @@
-import { client } from "@/sanity/client";
+import { cachedFetch } from "@/sanity/client";
 import { ShowGrid } from "@/lib/components";
 import { SHOW_LIST_PROJECTION, type ShowListItem } from "@/lib/queries";
 import { notFound } from "next/navigation";
@@ -12,16 +12,25 @@ type ArtistDetail = {
   lastfmUrl: string | null;
 };
 
+const ARTIST_QUERY = `{
+  "artist": *[_type == "artist" && slug.current == $slug][0] { _id, name, genres, lastfmUrl },
+  "shows": *[_type == "show" && references(*[_type == "artist" && slug.current == $slug][0]._id)] | order(date desc) ${SHOW_LIST_PROJECTION}
+}`;
+
+async function getData(slug: string) {
+  return cachedFetch<{ artist: ArtistDetail | null; shows: ShowListItem[] }>(
+    ARTIST_QUERY,
+    { slug }
+  );
+}
+
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const artist = await client.fetch<ArtistDetail | null>(
-    `*[_type == "artist" && slug.current == $slug][0] { _id, name, genres, lastfmUrl }`,
-    { slug }
-  );
+  const { artist } = await getData(slug);
   if (!artist) return { title: "Artist not found" };
   return { title: artist.name };
 }
@@ -32,18 +41,9 @@ export default async function ArtistPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-
-  const artist = await client.fetch<ArtistDetail | null>(
-    `*[_type == "artist" && slug.current == $slug][0] { _id, name, genres, lastfmUrl }`,
-    { slug }
-  );
+  const { artist, shows } = await getData(slug);
 
   if (!artist) notFound();
-
-  const shows = await client.fetch<ShowListItem[]>(
-    `*[_type == "show" && references($id)] | order(date desc) ${SHOW_LIST_PROJECTION}`,
-    { id: artist._id }
-  );
 
   return (
     <main className="mx-auto max-w-6xl px-4 py-8">

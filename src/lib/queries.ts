@@ -14,7 +14,7 @@ export type ShowListItem = {
 
 export const SHOW_LIST_PROJECTION = `{
   _id,
-  title,
+  "title": coalesce(title, artist->name + " at " + venue->name),
   date,
   slug,
   price,

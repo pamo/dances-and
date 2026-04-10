@@ -1,4 +1,4 @@
-import { client } from "@/sanity/client";
+import { cachedFetch } from "@/sanity/client";
 import Link from "next/link";
 import type { Metadata } from "next";
 
@@ -29,7 +29,7 @@ function visitCount(shows: { date: string; festival: { _ref: string } | null }[]
 }
 
 export default async function VenuesPage() {
-  const venues = await client.fetch<VenueWithShows[]>(
+  const venues = await cachedFetch<VenueWithShows[]>(
     `*[_type == "venue"] {
       _id,
       name,

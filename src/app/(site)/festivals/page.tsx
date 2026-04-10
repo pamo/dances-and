@@ -1,4 +1,4 @@
-import { client } from "@/sanity/client";
+import { cachedFetch } from "@/sanity/client";
 import Link from "next/link";
 import type { Metadata } from "next";
 
@@ -12,7 +12,7 @@ type FestivalWithShows = {
 };
 
 export default async function FestivalsPage() {
-  const festivals = await client.fetch<FestivalWithShows[]>(
+  const festivals = await cachedFetch<FestivalWithShows[]>(
     `*[_type == "festival"] {
       _id,
       name,

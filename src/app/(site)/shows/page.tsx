@@ -1,4 +1,4 @@
-import { client } from "@/sanity/client";
+import { cachedFetch } from "@/sanity/client";
 import { ALL_SHOWS_QUERY, type ShowListItem } from "@/lib/queries";
 import { ShowGrid } from "@/lib/components";
 import type { Metadata } from "next";
@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = { title: "All Shows" };
 
 export default async function ShowsPage() {
-  const shows = await client.fetch<ShowListItem[]>(ALL_SHOWS_QUERY);
+  const shows = await cachedFetch<ShowListItem[]>(ALL_SHOWS_QUERY);
 
   const today = new Date().toISOString().split("T")[0];
   const upcoming = shows.filter((s) => s.date >= today).reverse();

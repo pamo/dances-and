@@ -1,4 +1,4 @@
-import { client } from "@/sanity/client";
+import { cachedFetch } from "@/sanity/client";
 import { ShowGrid } from "@/lib/components";
 import { SHOW_LIST_PROJECTION, type ShowListItem } from "@/lib/queries";
 import { notFound } from "next/navigation";
@@ -11,18 +11,27 @@ type FestivalDetail = {
   website: string | null;
 };
 
+const FESTIVAL_QUERY = `{
+  "festival": *[_type == "festival" && slug.current == $slug][0] { _id, name, website },
+  "shows": *[_type == "show" && festival._ref == *[_type == "festival" && slug.current == $slug][0]._id] | order(date desc) ${SHOW_LIST_PROJECTION}
+}`;
+
+async function getData(slug: string) {
+  return cachedFetch<{ festival: FestivalDetail | null; shows: ShowListItem[] }>(
+    FESTIVAL_QUERY,
+    { slug }
+  );
+}
+
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const fest = await client.fetch<FestivalDetail | null>(
-    `*[_type == "festival" && slug.current == $slug][0] { _id, name, website }`,
-    { slug }
-  );
-  if (!fest) return { title: "Festival not found" };
-  return { title: fest.name };
+  const { festival } = await getData(slug);
+  if (!festival) return { title: "Festival not found" };
+  return { title: festival.name };
 }
 
 export default async function FestivalPage({
@@ -31,20 +40,10 @@ export default async function FestivalPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+  const { festival, shows } = await getData(slug);
 
-  const fest = await client.fetch<FestivalDetail | null>(
-    `*[_type == "festival" && slug.current == $slug][0] { _id, name, website }`,
-    { slug }
-  );
+  if (!festival) notFound();
 
-  if (!fest) notFound();
-
-  const shows = await client.fetch<ShowListItem[]>(
-    `*[_type == "show" && festival._ref == $id] | order(date desc) ${SHOW_LIST_PROJECTION}`,
-    { id: fest._id }
-  );
-
-  // Count unique attendance days (not individual sets)
   const uniqueDays = new Set(shows.map((s) => s.date)).size;
 
   return (
@@ -57,13 +56,13 @@ export default async function FestivalPage({
       </Link>
 
       <header className="mt-6 mb-8">
-        <h1 className="text-4xl font-bold tracking-tight">{fest.name}</h1>
+        <h1 className="text-4xl font-bold tracking-tight">{festival.name}</h1>
         <p className="mt-2 text-zinc-500">
           {uniqueDays} day{uniqueDays !== 1 && "s"} &middot; {shows.length} set{shows.length !== 1 && "s"}
         </p>
-        {fest.website && (
+        {festival.website && (
           <a
-            href={fest.website}
+            href={festival.website}
             target="_blank"
             rel="noopener noreferrer"
             className="mt-1 inline-block text-sm text-primary hover:underline"

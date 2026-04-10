@@ -1,4 +1,4 @@
-import { client } from "@/sanity/client";
+import { cachedFetch } from "@/sanity/client";
 import Link from "next/link";
 import type { Metadata } from "next";
 
@@ -13,7 +13,7 @@ type ArtistWithCount = {
 };
 
 export default async function ArtistsPage() {
-  const artists = await client.fetch<ArtistWithCount[]>(
+  const artists = await cachedFetch<ArtistWithCount[]>(
     `*[_type == "artist"] {
       _id,
       name,

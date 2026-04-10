@@ -1,4 +1,4 @@
-import { client } from "@/sanity/client";
+import { cachedFetch } from "@/sanity/client";
 import { ShowGrid } from "@/lib/components";
 import { SHOW_LIST_PROJECTION, type ShowListItem } from "@/lib/queries";
 import { notFound } from "next/navigation";
@@ -14,16 +14,25 @@ type VenueDetail = {
   website: string | null;
 };
 
+const VENUE_QUERY = `{
+  "venue": *[_type == "venue" && slug.current == $slug][0] { _id, name, city, state, country, website },
+  "shows": *[_type == "show" && venue._ref == *[_type == "venue" && slug.current == $slug][0]._id] | order(date desc) ${SHOW_LIST_PROJECTION}
+}`;
+
+async function getData(slug: string) {
+  return cachedFetch<{ venue: VenueDetail | null; shows: ShowListItem[] }>(
+    VENUE_QUERY,
+    { slug }
+  );
+}
+
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const venue = await client.fetch<VenueDetail | null>(
-    `*[_type == "venue" && slug.current == $slug][0] { _id, name, city, state, country, website }`,
-    { slug }
-  );
+  const { venue } = await getData(slug);
   if (!venue) return { title: "Venue not found" };
   return { title: venue.name };
 }
@@ -34,18 +43,9 @@ export default async function VenuePage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-
-  const venue = await client.fetch<VenueDetail | null>(
-    `*[_type == "venue" && slug.current == $slug][0] { _id, name, city, state, country, website }`,
-    { slug }
-  );
+  const { venue, shows } = await getData(slug);
 
   if (!venue) notFound();
-
-  const shows = await client.fetch<ShowListItem[]>(
-    `*[_type == "show" && venue._ref == $id] | order(date desc) ${SHOW_LIST_PROJECTION}`,
-    { id: venue._id }
-  );
 
   // Count visits, deduplicating festival shows on the same date
   const visitDates = new Set<string>();

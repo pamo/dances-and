@@ -1,6 +1,8 @@
-import { client } from "@/sanity/client";
+import { Fragment } from "react";
+import { cachedFetch } from "@/sanity/client";
 import Link from "next/link";
 import { ALL_SHOWS_QUERY, type ShowListItem } from "@/lib/queries";
+import { YearSummary } from "@/lib/components";
 import {
   Card,
   CardContent,
@@ -119,9 +121,8 @@ function Heatmap({ shows }: { shows: ShowListItem[] }) {
 
         {/* Year rows */}
         {years.map((year) => (
-          <>
+          <Fragment key={year}>
             <Link
-              key={`label-${year}`}
               href={`/year/${year}`}
               className="text-[10px] text-muted-foreground pr-1.5 text-right leading-4 hover:text-foreground"
             >
@@ -138,7 +139,7 @@ function Heatmap({ shows }: { shows: ShowListItem[] }) {
                 />
               );
             })}
-          </>
+          </Fragment>
         ))}
       </div>
     </div>
@@ -150,7 +151,7 @@ function Heatmap({ shows }: { shows: ShowListItem[] }) {
 // ---------------------------------------------------------------------------
 
 export default async function Home() {
-  const shows = await client.fetch<ShowListItem[]>(ALL_SHOWS_QUERY);
+  const shows = await cachedFetch<ShowListItem[]>(ALL_SHOWS_QUERY);
 
   const today = new Date().toISOString().split("T")[0];
   const past = shows.filter((s) => s.date < today);
@@ -234,7 +235,7 @@ export default async function Home() {
       return { year, topGenre: sorted[0]?.[0] ?? "—" };
     });
 
-  const years = [...new Set(past.map((s) => getYear(s.date)))].sort();
+  const years = [...new Set(past.map((s) => getYear(s.date)))].sort().reverse();
 
   return (
     <main className="mx-auto max-w-5xl px-4 py-8 space-y-8">
@@ -264,30 +265,49 @@ export default async function Home() {
 
       {/* Upcoming */}
       {upcoming.length > 0 && (
-        <Card className="border-primary/30 bg-primary/5">
-          <CardHeader className="pb-2">
-            <CardTitle className="text-base text-primary">
-              {upcoming.length} Upcoming
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-1">
+        <section>
+          <h2 className="mb-3 text-base font-semibold">
+            {upcoming.length} Upcoming
+          </h2>
+          <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
             {upcoming.map((s) => (
               <Link
                 key={s._id}
-                href={`/shows/${s.slug.current}`}
-                className="block text-sm hover:text-red-700"
+                href={`/shows/${s.slug?.current}`}
+                className="group flex items-baseline justify-between rounded-lg border px-3 py-2 text-sm transition-colors hover:bg-muted"
               >
-                <span className="font-medium">{s.artist?.name}</span>
-                {" — "}
-                {new Date(s.date + "T00:00:00").toLocaleDateString("en-US", {
-                  month: "short",
-                  day: "numeric",
-                })}
+                <div>
+                  <span className="font-medium group-hover:text-primary">
+                    {s.artist?.name}
+                  </span>
+                  <span className="ml-1.5 text-muted-foreground">
+                    @ {s.festival ? s.festival.name : s.venue?.name}
+                  </span>
+                </div>
+                <time className="ml-3 shrink-0 text-xs text-muted-foreground">
+                  {new Date(s.date + "T00:00:00").toLocaleDateString("en-US", {
+                    month: "short",
+                    day: "numeric",
+                  })}
+                </time>
               </Link>
             ))}
-          </CardContent>
-        </Card>
+          </div>
+        </section>
       )}
+
+      {/* Year so far */}
+      <YearSummary
+        shows={past.filter(
+          (s) => getYear(s.date) === new Date().getFullYear().toString()
+        )}
+        label={`${new Date().getFullYear()} so far`}
+        linkHref={`/year/${new Date().getFullYear()}`}
+        linkLabel="Full review"
+      />
+
+      {/* All Time heading */}
+      <h2 className="text-lg font-semibold text-muted-foreground">All Time</h2>
 
       {/* Stat cards */}
       <div className="grid grid-cols-3 gap-3 sm:grid-cols-5">
@@ -325,6 +345,20 @@ export default async function Home() {
               )}
             </CardContent>
           </Card>
+        ))}
+      </div>
+
+      {/* Year in review — inline links */}
+      <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm">
+        <span className="text-muted-foreground">Year in review:</span>
+        {years.map((y) => (
+          <Link
+            key={y}
+            href={`/year/${y}`}
+            className="text-muted-foreground hover:text-primary transition-colors"
+          >
+            {y}
+          </Link>
         ))}
       </div>
 
@@ -562,25 +596,6 @@ export default async function Home() {
       </div>
 
 
-      {/* Year in review */}
-      <Card>
-        <CardHeader className="pb-2">
-          <CardTitle className="text-base">Year in Review</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="flex flex-wrap gap-2">
-            {years.map((y) => (
-              <Link
-                key={y}
-                href={`/year/${y}`}
-                className="rounded-md border px-3 py-1.5 text-sm font-medium hover:bg-muted transition-colors"
-              >
-                {y}
-              </Link>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
     </main>
   );
 }

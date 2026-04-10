@@ -6,19 +6,6 @@ export const show = defineType({
   type: "document",
   fields: [
     defineField({
-      name: "title",
-      title: "Title",
-      type: "string",
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
-      name: "slug",
-      title: "Slug",
-      type: "slug",
-      options: { source: "title" },
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
       name: "date",
       title: "Date",
       type: "date",
@@ -43,6 +30,20 @@ export const show = defineType({
       title: "Festival",
       type: "reference",
       to: [{ type: "festival" }],
+    }),
+    defineField({
+      name: "title",
+      title: "Title",
+      type: "string",
+      description: "Auto-generated on publish. Set manually to override.",
+      hidden: true,
+    }),
+    defineField({
+      name: "slug",
+      title: "Slug",
+      type: "slug",
+      description: "Auto-generated on publish. No need to set manually.",
+      hidden: true,
     }),
     defineField({
       name: "price",
@@ -117,9 +118,10 @@ export const show = defineType({
       venue: "venue.name",
     },
     prepare({ title, artist, date, venue }) {
+      const generated = [artist, venue].filter(Boolean).join(" at ");
       return {
-        title: artist || title,
-        subtitle: [date, venue].filter(Boolean).join(" — "),
+        title: title || generated || "Untitled Show",
+        subtitle: date ?? "",
       };
     },
   },
