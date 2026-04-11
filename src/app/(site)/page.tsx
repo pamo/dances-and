@@ -41,7 +41,7 @@ function countVenueVisits(shows: ShowListItem[]) {
     const venue = s.venue?.name;
     if (!venue) continue;
     if (s.festival) {
-      const key = `${s.date}|${venue}`;
+      const key = `${s.festival.name}|${venue}`;
       if (visited.has(key)) continue;
       visited.add(key);
     }

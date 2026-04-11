@@ -13,13 +13,13 @@ type VenueWithShows = {
   shows: { date: string; festival: { _ref: string } | null }[];
 };
 
-/** Count visits, deduplicating festival shows on the same date */
+/** Count visits: an entire festival counts as 1 visit */
 function visitCount(shows: { date: string; festival: { _ref: string } | null }[]): number {
   const seen = new Set<string>();
   let count = 0;
   for (const s of shows) {
     if (s.festival) {
-      const key = s.date;
+      const key = s.festival._ref;
       if (seen.has(key)) continue;
       seen.add(key);
     }

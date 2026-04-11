@@ -47,14 +47,14 @@ export default async function VenuePage({
 
   if (!venue) notFound();
 
-  // Count visits, deduplicating festival shows on the same date
-  const visitDates = new Set<string>();
+  // Count visits: an entire festival counts as 1 visit
+  const seenFestivals = new Set<string>();
   let visits = 0;
   for (const s of shows) {
     if (s.festival) {
-      const key = s.date;
-      if (visitDates.has(key)) continue;
-      visitDates.add(key);
+      const key = s.festival.name;
+      if (seenFestivals.has(key)) continue;
+      seenFestivals.add(key);
     }
     visits++;
   }
