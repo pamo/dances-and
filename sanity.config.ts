@@ -39,8 +39,10 @@ export default defineConfig({
 
         return (props) => {
           const originalAction = action(props)
+          if (!originalAction) return null
           return {
             ...originalAction,
+            label: originalAction.label ?? action.action ?? 'Untitled',
             onHandle: async () => {
               const doc = props.draft || props.published
               if (!doc) return originalAction.onHandle?.()
