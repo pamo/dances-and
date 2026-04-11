@@ -143,7 +143,7 @@ export function YearSummary({
   ).size;
 
   const topArtists = countByHelper(shows, (s) => s.artist?.name).slice(0, 5);
-  const topVenues = countByHelper(shows, (s) => s.venue?.name).slice(0, 5);
+  const topVenues = countVenueVisitsHelper(shows).slice(0, 5);
   const topGenres = countByHelper(shows, (s) => s.artist?.genres?.[0]).slice(
     0,
     5
@@ -228,6 +228,24 @@ function slugify(text: string): string {
     .replace(/&/g, "and")
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)/g, "");
+}
+
+function countVenueVisitsHelper(shows: ShowListItem[]) {
+  const seen = new Set<string>();
+  const map = new Map<string, number>();
+  for (const s of shows) {
+    const venue = s.venue?.name;
+    if (!venue) continue;
+    if (s.festival) {
+      const key = `${s.festival.name}|${venue}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+    }
+    map.set(venue, (map.get(venue) ?? 0) + 1);
+  }
+  return [...map.entries()]
+    .sort((a, b) => b[1] - a[1])
+    .map(([name, count]) => ({ name, count }));
 }
 
 function countByHelper<T>(
