@@ -66,7 +66,7 @@ export default defineConfig({
               }
 
               // Auto-generate slug if missing
-              if (!doc.slug?.current && doc.date) {
+              if (!(doc.slug as {current?: string})?.current && doc.date) {
                 const title =
                   (patches.title as string) || (doc.title as string) || ''
                 const artistName = title.includes(' at ')

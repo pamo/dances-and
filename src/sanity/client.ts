@@ -20,7 +20,7 @@ export async function cachedFetch<T>(
   params?: Record<string, unknown>,
   tags: string[] = ["sanity"],
 ): Promise<T> {
-  return client.fetch<T>(query, params, {
+  return client.fetch<T>(query, params ?? {}, {
     next: {
       tags,
       revalidate: process.env.NODE_ENV === "production" ? 3600 : 0,
