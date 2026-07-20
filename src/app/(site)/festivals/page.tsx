@@ -13,7 +13,7 @@ type FestivalWithShows = {
 
 export default async function FestivalsPage() {
   const festivals = await cachedFetch<FestivalWithShows[]>(
-    `*[_type == "festival"] {
+    `*[_type == "festival" && defined(slug.current)] {
       _id,
       name,
       slug,
