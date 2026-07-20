@@ -62,6 +62,31 @@ async function resolveOrCreate(
   return { _type: "reference", _ref: created._id };
 }
 
+/**
+ * Parse JSON that may be wrapped in markdown code fences or surrounded by
+ * prose (common with on-device / Private Cloud Compute model output).
+ * Returns null if no valid JSON object can be recovered.
+ */
+function parseLooseJson(text: string): Record<string, unknown> | null {
+  if (!text) return null;
+  let t = text.trim();
+  // Strip a leading/trailing ```json … ``` (or plain ```) fence.
+  const fence = t.match(/^```(?:json)?\s*([\s\S]*?)\s*```$/i);
+  if (fence) t = fence[1].trim();
+  // If there's surrounding prose, slice to the outermost { … }.
+  const start = t.indexOf("{");
+  const end = t.lastIndexOf("}");
+  if (start !== -1 && end > start) t = t.slice(start, end + 1);
+  try {
+    const parsed = JSON.parse(t);
+    return parsed && typeof parsed === "object" && !Array.isArray(parsed)
+      ? (parsed as Record<string, unknown>)
+      : null;
+  } catch {
+    return null;
+  }
+}
+
 function asStringArray(value: unknown): string[] {
   if (!Array.isArray(value)) return [];
   return value.map((v) => String(v).trim()).filter(Boolean);
@@ -72,11 +97,15 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Invalid secret" }, { status: 401 });
   }
 
-  let body: Record<string, unknown>;
-  try {
-    body = await req.json();
-  } catch {
-    return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
+  // On-device / PCC models often wrap JSON in ```json fences or add a
+  // sentence, so parse leniently rather than requiring strict JSON.
+  const raw = await req.text();
+  const body = parseLooseJson(raw);
+  if (!body) {
+    return NextResponse.json(
+      { error: "Invalid JSON body", received: raw.slice(0, 300) },
+      { status: 400 },
+    );
   }
 
   const artist = typeof body.artist === "string" ? body.artist.trim() : "";
