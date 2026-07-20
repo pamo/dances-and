@@ -13,10 +13,9 @@ import { writeClient } from "@/sanity/lib/writeClient";
  *     "venue":  "The Independent",         // required
  *     "date":   "2026-07-19",              // required, YYYY-MM-DD
  *     "price":  29.05,
- *     "rating": 4,                          // 1-5
  *     "solo":   false,
+ *     "companions": true,                   // went with other people
  *     "openers":    ["Some Opener"],
- *     "companions": ["Alex"],
  *     "tags":       ["indie"],
  *     "festival":   "Noise Pop",
  *     "notes":      "Encore was unreal.",
@@ -157,16 +156,13 @@ export async function POST(req: NextRequest) {
     };
 
     if (typeof body.price === "number") show.price = body.price;
-    if (typeof body.rating === "number") show.rating = body.rating;
     if (typeof body.solo === "boolean") show.solo = body.solo;
+    if (typeof body.companions === "boolean") show.companions = body.companions;
     if (typeof body.notes === "string" && body.notes.trim())
       show.notes = body.notes.trim();
     if (festivalRef) show.festival = festivalRef;
     if (openerRefs.length)
       show.openers = openerRefs.map((r, i) => ({ ...r, _key: `opener-${i}` }));
-
-    const companions = asStringArray(body.companions);
-    if (companions.length) show.companions = companions;
 
     const tags = asStringArray(body.tags);
     if (tags.length) show.tags = tags;

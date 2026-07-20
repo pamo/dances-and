@@ -73,17 +73,9 @@ export const show = defineType({
     defineField({
       name: "companions",
       title: "Companions",
-      type: "array",
-      of: [{ type: "string" }],
-      options: { layout: "tags" },
-      description: "Who you went with",
-    }),
-    defineField({
-      name: "rating",
-      title: "Rating",
-      type: "number",
-      validation: (rule) => rule.min(1).max(5),
-      description: "1-5 star rating",
+      type: "boolean",
+      description: "Went with other people",
+      initialValue: false,
     }),
     defineField({
       name: "notes",

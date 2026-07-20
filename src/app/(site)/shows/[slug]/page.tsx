@@ -35,8 +35,7 @@ type Show = {
   solo: boolean;
   openers: Artist[] | null;
   tags: string[] | null;
-  companions: string[] | null;
-  rating: number | null;
+  companions: boolean | null;
   notes: string | null;
 };
 
@@ -56,7 +55,6 @@ const SHOW_WITH_NAV_QUERY = `{
     solo,
     tags,
     companions,
-    rating,
     notes,
     artist->{name, slug, genres, lastfmUrl},
     venue->{name, slug, city, state, country},
@@ -179,17 +177,6 @@ export default async function ShowPage({
             {show.solo ? "Yes" : "No"}
           </p>
         </div>
-        {show.rating && (
-          <div>
-            <p className="text-xs font-medium uppercase tracking-wide text-zinc-400">
-              Rating
-            </p>
-            <p className="mt-1 text-lg font-semibold">
-              {"★".repeat(show.rating)}
-              {"☆".repeat(5 - show.rating)}
-            </p>
-          </div>
-        )}
         {show.artist?.genres && show.artist.genres.length > 0 && (
           <div>
             <p className="text-xs font-medium uppercase tracking-wide text-zinc-400">
@@ -219,12 +206,12 @@ export default async function ShowPage({
         </section>
       )}
 
-      {show.companions && show.companions.length > 0 && (
+      {show.companions && (
         <section className="mb-8">
           <h2 className="text-sm font-medium uppercase tracking-wide text-zinc-400 mb-2">
             With
           </h2>
-          <p className="text-sm">{show.companions.join(", ")}</p>
+          <p className="text-sm">Went with others</p>
         </section>
       )}
 
